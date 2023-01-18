@@ -1,0 +1,477 @@
+:root {
+    font-size: 16px;
+    --primary-color: #2F017B;
+    --primary-ascent-color: #6F42C1;
+    --text-color: #FFF;
+    --roboto-font: "Roboto", sans-serif;
+    --font-person: @import url('https://fonts.google.com/specimen/Inter');
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-person);
+    margin: 0;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+.main-section img {
+    max-width: 100%;
+}
+
+.rounded-box {
+    border-radius: 20px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 10px rgba(50, 17, 168, 0.13);
+    padding: 20px;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+h1,
+h2 {
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 1.6rem;
+}
+
+/* main.main-section {
+    min-height: calc(100% - 276px);
+} */
+
+/* NAVBAR */
+
+.nav-black {
+    background-color: #525252;
+    height: 85px;
+}
+
+.nav-link-custom {
+    color: #FFF;
+}
+
+.nav-link-custom:hover {
+    color: #FFF;
+}
+
+/* FIM NAVBAR */
+
+/* FOOTER */
+
+.footer {
+    background-color: var(--primary-color);
+    padding: 5%;
+}
+
+.desc_footer_left>p {
+    color: #fff;
+}
+
+.desc_footer_right>p {
+    color: #fff;
+}
+
+.conteudo {
+    color: #FFF;
+}
+
+.lista_footer>ul>li>a {
+    color: #fff;
+    text-decoration: none;
+    padding-left: 0;
+}
+
+.lista_footer>ul {
+    padding: 0;
+}
+
+.lista_footer ul li {
+    list-style: none;
+}
+
+/* FIM FOOTER */
+
+/* Home */
+
+.banner-image {
+    background-image: url(../images/banner-sp.png);
+    background-position: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#h1-quem-somos-home {
+    font-family: var(--font-person);
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 58px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #525252;
+}
+
+.p-quem-somos-home {
+    font-family: var(--font-person);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0.01em;
+    text-align: justify;
+}
+
+#texto-banner {
+    position: absolute;
+    right: 160px;
+    top: 100px;
+    font-family: var(--font-person);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    color: #FFFFFF;
+}
+
+.banner-image-second {
+    background-image: url(../images/home/fibra.png);
+    background-position: center;
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#texto-banner-second {
+    position: absolute;
+    right: 10%;
+    left: 30%;
+    text-align: justify;
+    bottom: 100px;
+    font-family: var(--font-person);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 167.52%;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+}
+
+/* CARDS - HOME */
+
+.cards-home .card-img-top {
+    width: 128px;
+    margin-top: -60px;
+    padding-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cards-custom-home {
+    background: #2774E8CC;
+}
+
+.cards-custom-home p {
+    color: #D9D9D9;
+}
+
+/* CARDS SERVICOS */
+
+.logistics h1 {
+    font-family: var(--font-person);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    color: #525252;
+}
+
+.logistics p {
+    font-family: var(--font-person);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 167.52%;
+    letter-spacing: 0.01em;
+    color: #525252;
+}
+
+/* PRODUCTS */
+
+.banners-image-products {
+    background-image: url(../images/products/banners.png);
+    background-position: center;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#title-custom-products {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 141.52%;
+    color: #525252;
+}
+
+#texto-banners-products {
+    position: absolute;
+    left: 200px;
+    top: 200px;
+    font-family: var(--font-person);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    color: #FFFFFF;
+}
+
+.btn-custom-product {
+    background: #525252 !important;
+    border-radius: 8px !important;
+    border: none !important;
+    color: #D9D9D9;
+    width: 90%;
+}
+
+/* CERTIFICATES */
+
+.banners-certifications-image {
+    background-image: url(../images/certifications/banner.png);
+    background-position: center;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#texto-banners-contacts {
+    position: absolute;
+    right: 300px;
+    top: 180px;
+    font-family: var(--font-person);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    color: #FFFFFF;
+}
+
+/* CONTACTS */
+
+.banners-contacts-imagem {
+    background-image: url(../images/contacts/banners-contacts.png);
+    background-position: center;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.banners-certifications h1 {
+    font-family: var(--font-person);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 167.52%;
+    color: #525252;
+}
+
+.form-contacts {
+    background: #3A3939;
+}
+
+.form-control-contacts {
+    color: #D9D9D9;
+    background-color: #3A3939 !important;
+    border: none !important;
+    border-bottom: 1px solid #ced4da !important;
+    border-radius: 0px !important;
+}
+
+.form-control:focus {
+    color: #D9D9D9;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+
+.form-contacts label {
+    font-family: var(--font-person);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #D9D9D9;
+}
+
+.form-control-contacts::placeholder {
+    color: #D9D9D9;
+}
+
+/* FOOTER */
+
+.rodape-aar {
+    font-size: 16px;
+    font-weight: 300;
+    background: #FFF;
+    color: #525252;
+    border-top: 2px solid #000000;
+}
+
+.rodape-aar h1 {
+    font-family: var(--font-person);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 167.52%;
+    color: #525252;
+}
+
+.rodape-aar p {
+    font-family: var(--font-person);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 167.52%;
+    color: #525252;
+}
+
+.rodape-aar a {
+    font-family: var(--font-person);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 167.52%;
+    color: #525252;
+}
+
+.logo-rodape img {
+    max-width: 100% !important;
+}
+
+.quadro-rodape .menu,
+.quadro-rodape .sub-menu {
+    padding: 0;
+}
+
+.sub-footer {
+    background: #525252;
+    color: #D9D9D9;
+    font-size: 16px;
+}
+
+.sub-footer a:hover {
+    text-decoration: none;
+}
+
+.rodape-social {
+    display: inline;
+}
+
+.rodape-social li {
+    list-style: none;
+    float: left;
+    margin-right: 15px;
+}
+
+.rodape-social i {
+    font-size: 20px;
+}
+
+#custom_html-3 {
+    padding-left: 20px;
+}
+
+@media (max-width: 765px) {
+    .logo-rodape img {
+        max-width: 50% !important;
+    }
+}
+
+@media (max-width: 468px) {
+    .nav-black {
+        height: auto;
+    }
+
+    .navbar-toggler {
+        background-color: #FFF !important;
+    }
+
+    .banner-image {
+        height: 50vh;
+    }
+
+    .cards-home .card-img-top {
+        width: 190px !important;
+        margin-top: -80px;
+        padding-bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #texto-banner {
+        right: 109px;
+        top: 70px;
+        font-size: 23px;
+        line-height: 31px;
+    }
+
+    .banner-image-second {
+        height: 55vh;
+    }
+
+    #texto-banner-second {
+        position: relative;
+        left: 0px;
+        top: 20px;
+        text-align: center;
+    }
+
+    .img-banner-2 {
+        height: 250px !important;
+    }
+
+    /* PRODUCTS */
+    #texto-banners-products {
+        left: 50px;
+        top: 100px;
+        font-size: 33px;
+    }
+
+    .banners-image-products {
+        height: 50vh;
+    }
+
+    /* CERTIFICACOES */
+    .banners-certifications-image {
+        height: 50vh;
+    }
+
+    #texto-banners-products {
+        top: 35px;
+    }
+
+    /* CONTACTS */
+    #texto-banners-contacts {
+        right: 150px;
+        ;
+    }
+
+    .banners-contacts-imagem {
+        height: 50vh;
+    }
+
+    .logo-rodape img {
+        max-width: 60% !important;
+    }
+}

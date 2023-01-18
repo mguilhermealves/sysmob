@@ -1,0 +1,49 @@
+version: '3'
+services:
+  apache_sysmob:
+    build: ./site/
+    depends_on:
+      - mysql_sysmob
+    volumes:
+      - ./site/php.ini:/usr/local/etc/php/php.ini
+      - ../logs/:/var/log/
+      - ../site/public_html/:/var/www/sysmob/public_html/
+      - ../site/app/:/var/www/sysmob/app/
+      - ../site/cgi-bin/:/var/www/sysmob/cgi-bin/
+      - ../gerenciador/httpdocs/:/var/www/sysmob/gerenciador/httpdocs/
+      - ../gerenciador/app/:/var/www/sysmob/gerenciador/app/
+      - ../gerenciador/cgi-bin/:/var/www/sysmob/gerenciador/cgi-bin/
+      - ../upload/:/var/www/sysmob/gerenciador/httpdocs/furniture/upload/
+      - ../upload/:/var/www/sysmob/public_html/furniture/upload/
+      - ../_data/upload/:/var/www/financeiro/gerenciador/httpdocs/furniture/upload/
+    ports:
+      - "80:80"
+    networks:
+      net_sysmob:
+        ipv4_address: 172.29.0.3
+  # Data Layer
+  mysql_sysmob:
+    image: mysql:5.6.35
+    container_name: mysql_sysmob
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password --sql_mode=""
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=mysql_sysmob
+      - MYSQL_USER=user_sysmob
+      - MYSQL_PASSWORD=123456
+    volumes:
+      - ../_data/mysql-data/:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    networks:
+      net_sysmob:
+        ipv4_address: 172.29.0.2
+networks:
+  net_sysmob:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.29.0.0/16
