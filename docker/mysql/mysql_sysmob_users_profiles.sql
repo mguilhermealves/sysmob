@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `profiles_classes`
+-- Table structure for table `users_profiles`
 --
 
-DROP TABLE IF EXISTS `profiles_classes`;
+DROP TABLE IF EXISTS `users_profiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `profiles_classes` (
+CREATE TABLE `users_profiles` (
   `idx` mediumint(9) NOT NULL AUTO_INCREMENT,
   `created_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
@@ -31,20 +31,21 @@ CREATE TABLE `profiles_classes` (
   `removed_at` datetime DEFAULT NULL,
   `removed_by` int(11) DEFAULT NULL,
   `active` enum('yes','no') DEFAULT 'yes',
+  `users_id` int(11) DEFAULT NULL,
   `profiles_id` int(11) DEFAULT NULL,
-  `classes_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`idx`),
-  KEY `index2` (`profiles_id`,`classes_id`,`active`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `index2` (`users_id`,`profiles_id`,`active`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `profiles_classes`
+-- Dumping data for table `users_profiles`
 --
 
-LOCK TABLES `profiles_classes` WRITE;
-/*!40000 ALTER TABLE `profiles_classes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `profiles_classes` ENABLE KEYS */;
+LOCK TABLES `users_profiles` WRITE;
+/*!40000 ALTER TABLE `users_profiles` DISABLE KEYS */;
+INSERT INTO `users_profiles` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,'yes',1,1),(2,'2021-05-19 13:37:46',1,NULL,NULL,NULL,NULL,'yes',2,1),(3,NULL,NULL,NULL,NULL,'2022-02-09 15:48:58',1,'no',3,1),(4,'2022-02-09 15:48:58',1,NULL,NULL,NULL,NULL,'yes',3,14),(5,NULL,NULL,NULL,NULL,NULL,NULL,'yes',4,1);
+/*!40000 ALTER TABLE `users_profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-10 21:47:44
+-- Dump completed on 2023-01-19 20:56:43

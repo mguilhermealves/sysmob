@@ -16,14 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `qrcodes_manuals`
+-- Table structure for table `pretenants_personalreference`
 --
 
-DROP TABLE IF EXISTS `qrcodes_manuals`;
+DROP TABLE IF EXISTS `pretenants_personalreference`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `qrcodes_manuals` (
-  `idx` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `pretenants_personalreference` (
+  `idx` mediumint(9) NOT NULL AUTO_INCREMENT,
   `created_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `modified_at` datetime DEFAULT NULL,
@@ -31,20 +31,21 @@ CREATE TABLE `qrcodes_manuals` (
   `removed_at` datetime DEFAULT NULL,
   `removed_by` int(11) DEFAULT NULL,
   `active` enum('yes','no') DEFAULT 'yes',
-  `qrcodes_id` int(11) DEFAULT NULL,
-  `manuals_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idx`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+  `pretenants_id` int(11) DEFAULT NULL,
+  `personalreference_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idx`),
+  KEY `index2` (`pretenants_id`,`personalreference_id`,`active`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `qrcodes_manuals`
+-- Dumping data for table `pretenants_personalreference`
 --
 
-LOCK TABLES `qrcodes_manuals` WRITE;
-/*!40000 ALTER TABLE `qrcodes_manuals` DISABLE KEYS */;
-INSERT INTO `qrcodes_manuals` VALUES (1,'2022-07-27 00:54:20',2,NULL,NULL,'2022-07-31 17:46:28',2,'no',6,1),(2,'2022-07-27 00:55:48',2,NULL,NULL,'2022-07-27 00:56:08',2,'no',1,3),(3,'2022-07-27 00:56:08',2,NULL,NULL,'2022-07-31 17:35:39',2,'no',1,3),(4,'2022-07-27 01:06:00',2,NULL,NULL,NULL,NULL,'yes',2,2),(5,'2022-07-31 17:35:39',2,NULL,NULL,'2022-07-31 17:36:04',2,'no',1,3),(6,'2022-07-31 17:36:04',2,NULL,NULL,'2022-07-31 17:43:16',2,'no',1,3),(7,'2022-07-31 17:43:16',2,NULL,NULL,'2022-07-31 17:44:45',2,'no',1,3),(8,'2022-07-31 17:44:45',2,NULL,NULL,'2022-07-31 17:45:21',2,'no',1,3),(9,'2022-07-31 17:45:21',2,NULL,NULL,'2022-07-31 17:46:39',2,'no',1,3),(10,'2022-07-31 17:45:36',2,NULL,NULL,'2022-07-31 17:48:44',2,'no',5,2),(11,'2022-07-31 17:46:28',2,NULL,NULL,NULL,NULL,'yes',6,1),(12,'2022-07-31 17:46:39',2,NULL,NULL,'2022-07-31 17:48:49',2,'no',1,3),(13,'2022-07-31 17:48:44',2,NULL,NULL,NULL,NULL,'yes',5,2),(14,'2022-07-31 17:48:49',2,NULL,NULL,'2022-07-31 17:49:42',2,'no',1,3),(15,'2022-07-31 17:49:42',2,NULL,NULL,'2022-07-31 17:54:10',2,'no',1,3),(16,'2022-07-31 17:54:10',2,NULL,NULL,NULL,NULL,'yes',1,3);
-/*!40000 ALTER TABLE `qrcodes_manuals` ENABLE KEYS */;
+LOCK TABLES `pretenants_personalreference` WRITE;
+/*!40000 ALTER TABLE `pretenants_personalreference` DISABLE KEYS */;
+INSERT INTO `pretenants_personalreference` VALUES (1,'2023-01-19 23:43:19',2,NULL,NULL,NULL,NULL,'yes',1,1);
+/*!40000 ALTER TABLE `pretenants_personalreference` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-10 21:47:44
+-- Dump completed on 2023-01-19 20:56:42

@@ -16,8 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping routines for database 'mysql_sysmob'
+-- Table structure for table `profiles_classes`
 --
+
+DROP TABLE IF EXISTS `profiles_classes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `profiles_classes` (
+  `idx` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `modified_at` datetime DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL,
+  `removed_at` datetime DEFAULT NULL,
+  `removed_by` int(11) DEFAULT NULL,
+  `active` enum('yes','no') DEFAULT 'yes',
+  `profiles_id` int(11) DEFAULT NULL,
+  `classes_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idx`),
+  KEY `index2` (`profiles_id`,`classes_id`,`active`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `profiles_classes`
+--
+
+LOCK TABLES `profiles_classes` WRITE;
+/*!40000 ALTER TABLE `profiles_classes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `profiles_classes` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -28,4 +56,4 @@
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-10 21:47:45
+-- Dump completed on 2023-01-19 20:56:42

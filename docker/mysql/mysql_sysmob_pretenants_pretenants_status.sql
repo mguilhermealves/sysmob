@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users_profiles`
+-- Table structure for table `pretenants_pretenants_status`
 --
 
-DROP TABLE IF EXISTS `users_profiles`;
+DROP TABLE IF EXISTS `pretenants_pretenants_status`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users_profiles` (
+CREATE TABLE `pretenants_pretenants_status` (
   `idx` mediumint(9) NOT NULL AUTO_INCREMENT,
   `created_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
@@ -31,21 +31,21 @@ CREATE TABLE `users_profiles` (
   `removed_at` datetime DEFAULT NULL,
   `removed_by` int(11) DEFAULT NULL,
   `active` enum('yes','no') DEFAULT 'yes',
-  `users_id` int(11) DEFAULT NULL,
-  `profiles_id` int(11) DEFAULT NULL,
+  `pretenants_id` int(11) DEFAULT NULL,
+  `pretenants_status_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`idx`),
-  KEY `index2` (`users_id`,`profiles_id`,`active`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  KEY `index2` (`pretenants_id`,`pretenants_status_id`,`active`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users_profiles`
+-- Dumping data for table `pretenants_pretenants_status`
 --
 
-LOCK TABLES `users_profiles` WRITE;
-/*!40000 ALTER TABLE `users_profiles` DISABLE KEYS */;
-INSERT INTO `users_profiles` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,'yes',1,1),(2,'2021-05-19 13:37:46',1,NULL,NULL,NULL,NULL,'yes',2,1),(3,NULL,NULL,NULL,NULL,'2022-02-09 15:48:58',1,'no',3,1),(4,'2022-02-09 15:48:58',1,NULL,NULL,NULL,NULL,'yes',3,14),(5,NULL,NULL,NULL,NULL,NULL,NULL,'yes',4,1);
-/*!40000 ALTER TABLE `users_profiles` ENABLE KEYS */;
+LOCK TABLES `pretenants_pretenants_status` WRITE;
+/*!40000 ALTER TABLE `pretenants_pretenants_status` DISABLE KEYS */;
+INSERT INTO `pretenants_pretenants_status` VALUES (1,'2023-01-19 23:19:50',1,NULL,NULL,'2023-01-19 23:43:18',2,'no',1,1),(2,'2023-01-19 23:43:18',2,NULL,NULL,NULL,NULL,'yes',1,2);
+/*!40000 ALTER TABLE `pretenants_pretenants_status` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-10 21:47:44
+-- Dump completed on 2023-01-19 20:56:43

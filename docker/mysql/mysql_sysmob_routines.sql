@@ -16,35 +16,8 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users_address`
+-- Dumping routines for database 'mysql_sysmob'
 --
-
-DROP TABLE IF EXISTS `users_address`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users_address` (
-  `idx` int(11) NOT NULL AUTO_INCREMENT,
-  `created_at` datetime DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `modified_at` datetime DEFAULT NULL,
-  `modified_by` int(11) DEFAULT NULL,
-  `removed_at` datetime DEFAULT NULL,
-  `removed_by` int(11) DEFAULT NULL,
-  `active` enum('yes','no') DEFAULT 'yes',
-  `users_id` int(11) DEFAULT NULL,
-  `address_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idx`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `users_address`
---
-
-LOCK TABLES `users_address` WRITE;
-/*!40000 ALTER TABLE `users_address` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users_address` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -55,4 +28,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-10 21:47:44
+-- Dump completed on 2023-01-19 20:56:44

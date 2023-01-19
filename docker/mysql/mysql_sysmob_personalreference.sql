@@ -16,37 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `manuals`
+-- Table structure for table `personalreference`
 --
 
-DROP TABLE IF EXISTS `manuals`;
+DROP TABLE IF EXISTS `personalreference`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `manuals` (
+CREATE TABLE `personalreference` (
   `idx` int(11) NOT NULL AUTO_INCREMENT,
-  `created_at` datetime DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` int(11) NOT NULL,
   `modified_at` datetime DEFAULT NULL,
   `modified_by` int(11) DEFAULT NULL,
   `removed_at` datetime DEFAULT NULL,
   `removed_by` int(11) DEFAULT NULL,
-  `active` enum('yes','no') DEFAULT 'yes',
-  `name` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `video` varchar(255) DEFAULT NULL,
-  `manual_pdf` longtext,
+  `active` enum('yes','no') NOT NULL DEFAULT 'yes',
+  `full_name` varchar(255) DEFAULT NULL,
+  `celphone` varchar(255) DEFAULT NULL,
+  `type_relation` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idx`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `manuals`
+-- Dumping data for table `personalreference`
 --
 
-LOCK TABLES `manuals` WRITE;
-/*!40000 ALTER TABLE `manuals` DISABLE KEYS */;
-INSERT INTO `manuals` VALUES (1,'2022-03-25 01:28:51',2,'2022-03-30 12:28:54',2,NULL,NULL,'yes','AAR-T19-01','Manual conector reforçado optap. Manual e vídeo.','https://www.youtube.com/watch?v=9vvKb-rrBz8',NULL),(2,'2022-03-25 02:34:33',2,'2022-08-03 00:52:00',2,NULL,NULL,'yes','AAR-T18-03','Manual de Instruções Reforçado Telefonica AAR-T19-02','https://www.youtube.com/embed/m2f2tquk0yA','s:77:\"furniture/upload/manual/20220802215200_modelo-informe-de-rendimentos-2022.pdf\";'),(3,'2022-05-05 13:55:18',2,'2022-05-05 14:10:10',2,NULL,NULL,'yes','AAR-T18-01','Manual conector reforçado optap. Manual e vídeo.','https://www.youtube.com/watch?v=9vvKb-rrBz8',NULL);
-/*!40000 ALTER TABLE `manuals` ENABLE KEYS */;
+LOCK TABLES `personalreference` WRITE;
+/*!40000 ALTER TABLE `personalreference` DISABLE KEYS */;
+INSERT INTO `personalreference` VALUES (1,'2023-01-19 23:43:18',2,NULL,NULL,NULL,NULL,'yes','Teste','11970216020','1');
+/*!40000 ALTER TABLE `personalreference` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -58,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-10 21:47:43
+-- Dump completed on 2023-01-19 20:56:43

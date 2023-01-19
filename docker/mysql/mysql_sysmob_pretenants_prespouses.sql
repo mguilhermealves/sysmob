@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `menus_urls`
+-- Table structure for table `pretenants_prespouses`
 --
 
-DROP TABLE IF EXISTS `menus_urls`;
+DROP TABLE IF EXISTS `pretenants_prespouses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `menus_urls` (
+CREATE TABLE `pretenants_prespouses` (
   `idx` mediumint(9) NOT NULL AUTO_INCREMENT,
   `created_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
@@ -31,20 +31,21 @@ CREATE TABLE `menus_urls` (
   `removed_at` datetime DEFAULT NULL,
   `removed_by` int(11) DEFAULT NULL,
   `active` enum('yes','no') DEFAULT 'yes',
-  `menus_id` int(11) DEFAULT NULL,
-  `urls_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idx`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `pretenants_id` int(11) DEFAULT NULL,
+  `prespouses_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idx`),
+  KEY `index2` (`pretenants_id`,`prespouses_id`,`active`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `menus_urls`
+-- Dumping data for table `pretenants_prespouses`
 --
 
-LOCK TABLES `menus_urls` WRITE;
-/*!40000 ALTER TABLE `menus_urls` DISABLE KEYS */;
-INSERT INTO `menus_urls` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,'yes',9,141),(2,NULL,NULL,NULL,NULL,NULL,NULL,'yes',8,138),(3,NULL,NULL,NULL,NULL,NULL,NULL,'yes',2,5),(4,NULL,NULL,NULL,NULL,NULL,NULL,'yes',3,2),(5,NULL,NULL,NULL,NULL,NULL,NULL,'yes',4,24),(6,NULL,NULL,NULL,NULL,NULL,NULL,'yes',5,30),(7,NULL,NULL,NULL,NULL,NULL,NULL,'yes',7,33);
-/*!40000 ALTER TABLE `menus_urls` ENABLE KEYS */;
+LOCK TABLES `pretenants_prespouses` WRITE;
+/*!40000 ALTER TABLE `pretenants_prespouses` DISABLE KEYS */;
+INSERT INTO `pretenants_prespouses` VALUES (1,'2023-01-18 00:48:17',2,NULL,NULL,'2023-01-18 00:48:32',2,'no',1,6),(2,'2023-01-18 00:48:32',2,NULL,NULL,NULL,NULL,'yes',1,7);
+/*!40000 ALTER TABLE `pretenants_prespouses` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-10 21:47:43
+-- Dump completed on 2023-01-19 20:56:42

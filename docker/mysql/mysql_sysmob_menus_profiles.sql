@@ -16,14 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `manuals_qrcodes`
+-- Table structure for table `menus_profiles`
 --
 
-DROP TABLE IF EXISTS `manuals_qrcodes`;
+DROP TABLE IF EXISTS `menus_profiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `manuals_qrcodes` (
-  `idx` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `menus_profiles` (
+  `idx` mediumint(9) NOT NULL AUTO_INCREMENT,
   `created_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `modified_at` datetime DEFAULT NULL,
@@ -31,20 +31,20 @@ CREATE TABLE `manuals_qrcodes` (
   `removed_at` datetime DEFAULT NULL,
   `removed_by` int(11) DEFAULT NULL,
   `active` enum('yes','no') DEFAULT 'yes',
-  `manuals_id` int(11) DEFAULT NULL,
-  `qrcodes_id` int(11) DEFAULT NULL,
+  `menus_id` int(11) DEFAULT NULL,
+  `profiles_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`idx`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `manuals_qrcodes`
+-- Dumping data for table `menus_profiles`
 --
 
-LOCK TABLES `manuals_qrcodes` WRITE;
-/*!40000 ALTER TABLE `manuals_qrcodes` DISABLE KEYS */;
-INSERT INTO `manuals_qrcodes` VALUES (1,'2022-03-25 01:28:51',2,NULL,NULL,NULL,NULL,'yes',1,1),(2,'2022-03-25 02:34:33',2,NULL,NULL,'2022-03-25 02:37:07',2,'no',2,2),(3,'2022-03-25 02:37:07',2,NULL,NULL,NULL,NULL,'yes',2,2);
-/*!40000 ALTER TABLE `manuals_qrcodes` ENABLE KEYS */;
+LOCK TABLES `menus_profiles` WRITE;
+/*!40000 ALTER TABLE `menus_profiles` DISABLE KEYS */;
+INSERT INTO `menus_profiles` VALUES (1,'2022-08-02 23:21:00',1,NULL,NULL,NULL,NULL,'yes',1,1),(2,'2022-08-02 23:21:00',1,NULL,NULL,NULL,NULL,'yes',2,1),(3,'2022-08-02 23:21:00',1,NULL,NULL,NULL,NULL,'yes',3,1),(4,'2022-08-02 23:21:00',1,NULL,NULL,NULL,NULL,'yes',4,1),(5,'2022-08-02 23:21:00',1,NULL,NULL,NULL,NULL,'yes',5,1),(6,'2022-08-02 23:21:00',1,NULL,NULL,NULL,NULL,'yes',6,1),(7,'2022-08-02 23:21:00',1,NULL,NULL,NULL,NULL,'yes',7,1),(8,'2022-08-02 23:21:00',1,NULL,NULL,NULL,NULL,'yes',8,1),(9,'2022-08-02 23:21:00',1,NULL,NULL,NULL,NULL,'yes',9,1),(10,NULL,NULL,NULL,NULL,NULL,NULL,'yes',10,1);
+/*!40000 ALTER TABLE `menus_profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-10 21:47:43
+-- Dump completed on 2023-01-19 20:56:41
