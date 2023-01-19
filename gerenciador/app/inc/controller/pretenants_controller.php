@@ -149,8 +149,10 @@ class pretenants_controller
 			$pretenant = new pretenants_model();
 			$pretenant->set_filter(array(" idx = '" . $info["idx"] . "' "));
 			$pretenant->load_data();
-			$pretenant->attach(array("prespouses"), null, "and active = 'yes'");
+			$pretenant->attach(array("prespouses", "pretenants_status", "personalreference"), null, "and active = 'yes'");
 			$data = current($pretenant->data);
+
+			// print_pre($data, true);
 
 			$form = array(
 				"title" => "Editar Pré Locatário",
@@ -186,30 +188,48 @@ class pretenants_controller
 			basic_redir($GLOBALS["home_url"]);
 		}
 
-		$str = str_replace('.', '', $info["post"]["value"]); // remove o ponto
-		$info["post"]["value"] = str_replace(',', '.', $str);
-
 		$pretenant = new pretenants_model();
 
-		if (isset($info["idx"]) && (int)$info["idx"] > 0) {
-			$pretenant->set_filter(array(" idx = '" . $info["idx"] . "' "));
-		}
+		// $str = str_replace('.', '', $info["post"]["value"]); // remove o ponto
+		// $info["post"]["value"] = str_replace(',', '.', $str);
 
-		$pretenant->populate($info["post"]);
-		$pretenant->save();
+		if ($info["post"]["pretenants_status_id"] == 1) {
+			$pretenant->populate($info["post"]);
+			$pretenant->save();
 
-		if (!isset($info["idx"]) || (int)$info["idx"] == 0) {
 			$info["idx"] = $pretenant->con->insert_id;
-		}
 
-		if ($info["post"]["civil_status"] == "married") {
-			$spouse = new prespouses_model();
-			$spouse->populate($info["post"]["spouse"]);
-			$spouse->save();
+			if ($info["post"]["civil_status"] == "married") {
+				$spouse = new prespouses_model();
+				$spouse->populate($info["post"]["spouse"]);
+				$spouse->save();
+	
+				$info["post"]["prespouses_id"] = $spouse->con->insert_id;
+	
+				$pretenant->save_attach($info, array("prespouses"));
+			}
 
-			$info["post"]["prespouses_id"] = $spouse->con->insert_id;
+			$pretenant->save_attach($info, array("pretenants_status"));
+		} else if ($info["post"]["pretenants_status_id"] == 2) {
+			$pretenant->set_filter(array(" idx = '" . $info["idx"] . "' "));
 
-			$pretenant->save_attach($info, array("prespouses"));
+			$pretenant->populate($info["post"]);
+			$pretenant->save();
+
+			$personalreference = new personalreference_model();
+			$personalreference->populate($info["post"]["personalreference"]);
+			$personalreference->save();
+
+			$info["post"]["personalreference_id"] = $personalreference->con->insert_id;
+
+			$pretenant->save_attach($info, array("pretenants_status", "personalreference"));
+		} else {
+			$pretenant->set_filter(array(" idx = '" . $info["idx"] . "' "));
+
+			$pretenant->populate($info["post"]);
+			$pretenant->save();
+
+			$pretenant->save_attach($info, array("pretenants_status", "personalreference"));
 		}
 
 		basic_redir(sprintf($GLOBALS["pretenant_url"], $info["idx"]));

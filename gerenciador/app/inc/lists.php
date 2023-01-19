@@ -299,8 +299,8 @@ $type_public_lists = array(
   "out" => "Externo"
 );
 
-$type_products_lists = array(
-  "pizzas" => "Pizzas",
-  "drinks" => "Bebidas",
-  "other" => "Outros"
+$type_relation_lists = array(
+  "1" => "Pai/Mãe",
+  "2" => "Irmão/Irmã",
+  "3" => "Tio/Tia"
 );
