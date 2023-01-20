@@ -174,23 +174,27 @@
                                 <div class="form-group">
                                     <label for="othersrents">Possui outras fontes de renda?</label>
                                     <select name="othersrents" class="form-control" id="othersrents">
+                                        <option id="select" selected value="select">Selecione</option>
                                         <option value="yes">Sim</option>
                                         <option value="no">Não</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="col-lg-8">
-                                <div class="form-group">
-                                    <label for="origin">Descreva a origem</label>
-                                    <input type="text" name="origin" id="origin" class="form-control" value="<?php print(isset($data["origin"]) ? $data["origin"] : "") ?>">
-                                </div>
-                            </div>
+                            <div class="row box-body" id="selectYes" style="display: none;">
 
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="totalothersrents">Total (Outras) Rendas(s):</label>
-                                    <input type="text" name="totalothersrents" id="totalothersrents" class="form-control" value="<?php print(isset($data["totalothersrents"]) ? $data["totalothersrents"] : "") ?>">
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <label for="origin">Descreva a origem</label>
+                                        <input type="text" name="origin" id="origin" class="form-control" value="<?php print(isset($data["origin"]) ? $data["origin"] : "") ?>">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="totalothersrents">Total (Outras) Rendas(s):</label>
+                                        <input type="text" name="totalothersrents" id="totalothersrents" class="form-control" value="<?php print(isset($data["totalothersrents"]) ? $data["totalothersrents"] : "") ?>">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -206,23 +210,27 @@
                                 <div class="form-group">
                                     <label for="othersrents[conjuge]">Possui outras fontes de renda?</label>
                                     <select name="othersrents[conjuge]" class="form-control" id="othersrents[conjuge]">
-                                        <option value="yes">Sim</option>
-                                        <option value="no">Não</option>
+                                        <option id="select" selected value="select">Selecione</option>
+                                        <option id="yes" value="yes">Sim</option>
+                                        <option id="no" value="no">Não</option>
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="col-lg-8">
-                                <div class="form-group">
-                                    <label for="origin[conjuge]">Descreva a origem</label>
-                                    <input type="text" name="origin[conjuge]" id="origin[conjuge]" class="form-control" value="<?php print(isset($data["origin"]) ? $data["origin"] : "") ?>">
-                                </div>
-                            </div>
+                            <div class="row box-body" id="selectYes[conjuge]" style="display: none;">
 
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="totalothersrents[conjuge]">Total (Outras) Rendas(s):</label>
-                                    <input type="text" name="totalothersrents[conjuge]" id="totalothersrents[conjuge]" class="form-control" value="<?php print(isset($data["totalothersrents"]) ? $data["totalothersrents"] : "") ?>">
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <label for="origin[conjuge]">Descreva a origem</label>
+                                        <input type="text" name="origin[conjuge]" id="origin[conjuge]" class="form-control" value="<?php print(isset($data["origin"]) ? $data["origin"] : "") ?>">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="totalothersrents[conjuge]">Total (Outras) Rendas(s):</label>
+                                        <input type="text" name="totalothersrents[conjuge]" id="totalothersrents[conjuge]" class="form-control" value="<?php print(isset($data["totalothersrents"]) ? $data["totalothersrents"] : "") ?>">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -292,3 +300,19 @@
         </div>
     </div>
 </section>
+
+<script>
+    window.onload = function() {
+        document.getElementById('othersrents').addEventListener('change', function() {
+            var style = this.value == 'yes' ? 'block' : 'none';
+            document.getElementById('selectYes').style.display = style;
+        });
+    }
+
+    // window.onload = function() {
+    //     document.getElementById('othersrents[conjuge]').addEventListener('change', function() {
+    //         var style = this.value == 'yes' ? 'block' : 'none';
+    //         document.getElementById('selectYes[conjuge]').style.display = style;
+    //     });
+    // }
+</script>
