@@ -27,6 +27,35 @@
 
                     <div class="box box-primary">
                         <div class="box-header with-border">
+                            <h3 class="box-title">Dados do Locatário</h3>
+                        </div>
+
+                        <div class="box-body">
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="postalcode">Nome: </label>
+                                    <input type="text" disabled class="form-control" id="name" name="name" value="<?php print($data["first_name"]) . " de " . $data["last_name"]?>">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="cpf">CPF: </label>
+                                    <input type="text" disabled class="form-control" id="cpf" name="cpf" value="<?php print($data["cpf"]) ?>">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    <label for="celphone">Celular: </label>
+                                    <input type="text" disabled class="form-control" id="celphone" name="celphone" value="<?php print(isset($data["celphone"]) ? $data["celphone"] : $data["phone"]) ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
                             <h3 class="box-title">Endereço Residencial</h3>
                         </div>
 
@@ -68,19 +97,19 @@
 
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label for="city">Complemento: </label>
+                                    <label for="city">Cidade: </label>
                                     <input type="text" class="form-control" id="city" name="city" value="<?php print(isset($data["city"]) ? $data["city"] : "") ?>">
                                 </div>
                             </div>
 
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label for="city">Estado: </label>
-                                    <select class="form-control" id="city" name="city">
+                                    <label for="uf">Estado: </label>
+                                    <select class="form-control" id="uf" name="uf">
                                         <option value="">Selecione</option>
                                         <?php
                                         foreach ($GLOBALS["ufbr_lists"] as $k => $v) {
-                                            printf('<option %s value="%s">%s</option>', isset($data["city"]) && $k == $data["city"] ? ' selected' : '', $k, $v);
+                                            printf('<option %s value="%s">%s</option>', isset($data["uf"]) && $k == $data["uf"] ? ' selected' : '', $k, $v);
                                         }
                                         ?>
                                     </select>
@@ -98,14 +127,14 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="full_name">Nome: </label>
-                                    <input type="text" class="form-control" id="full_name" name="personalreference[full_name]" value="<?php print(isset($data["personalreference_attach"]) ? $data["personalreference_attach"][0]["full_name"] : "") ?>">
+                                    <input type="text" class="form-control" id="full_name" name="personalreference[full_name]" value="<?php print(isset($data["personalreference_attach"][0]) ? $data["personalreference_attach"][0]["full_name"] : "") ?>">
                                 </div>
                             </div>
 
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="celphone">Celular: </label>
-                                    <input type="text" class="form-control" id="celphone" name="personalreference[celphone]" value="<?php print(isset($data["personalreference_attach"]) ? $data["personalreference_attach"][0]["celphone"] : "") ?>">
+                                    <input type="text" class="form-control" id="celphone" name="personalreference[celphone]" value="<?php print(isset($data["personalreference_attach"][0]) ? $data["personalreference_attach"][0]["celphone"] : "") ?>">
                                 </div>
                             </div>
 
