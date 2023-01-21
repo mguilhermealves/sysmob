@@ -200,6 +200,8 @@
                         </div>
                     </div>
 
+                    <?php if($data["prespouses_attach"][0]["is_show_financer"] == 'yes') { ?>
+
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Outras fontes de renda (conjugê)</h3>
@@ -211,8 +213,8 @@
                                     <label for="othersrents_conjuge">Possui outras fontes de renda?</label>
                                     <select name="othersrents_conjuge" class="form-control" id="othersrents_conjuge">
                                         <option id="select" selected value="select">Selecione</option>
-                                        <option id="yes" value="yes">Sim</option>
-                                        <option id="no" value="no">Não</option>
+                                        <option id="yes_conjuge" value="yes_conjuge">Sim</option>
+                                        <option id="no_conjuge" value="no_conjuge">Não</option>
                                     </select>
                                 </div>
                             </div>
@@ -236,6 +238,8 @@
                         </div>
 
                     </div>
+
+                    <?php } ?>
 
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -307,12 +311,12 @@
             var style = this.value == 'yes' ? 'block' : 'none';
             document.getElementById('selectYes').style.display = style;
         });
+        document.getElementById('othersrents_conjuge').addEventListener('change', function() {
+            var style = this.value == 'yes_conjuge' ? 'block' : 'none';
+            document.getElementById('selectYes_conjuge').style.display = style;
+        });
     }
 
-    // window.onload = function() {
-    //     document.getElementById('othersrents[conjuge]').addEventListener('change', function() {
-    //         var style = this.value == 'yes' ? 'block' : 'none';
-    //         document.getElementById('selectYes[conjuge]').style.display = style;
-    //     });
-    // }
+   
+
 </script>

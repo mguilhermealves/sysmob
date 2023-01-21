@@ -152,6 +152,8 @@ class pretenants_controller
 			$pretenant->attach(array("prespouses", "pretenants_status", "personalreference", "pretenantsFinances"), null, "and active = 'yes'");
 			$data = current($pretenant->data);
 
+			// print_pre($data, true);
+
 			$form = array(
 				"title" => "Editar Pré Locatário",
 				"url" => sprintf($GLOBALS["pretenant_url"], $info["idx"])
