@@ -150,11 +150,7 @@ class pretenants_controller
 			$pretenant->set_filter(array(" idx = '" . $info["idx"] . "' "));
 			$pretenant->load_data();
 			$pretenant->attach(array("prespouses", "pretenants_status", "personalreference", "pretenantsFinances"), null, "and active = 'yes'");
-<<<<<<< HEAD
 			//$pretenant->join("pretenants", "pretenants", null, array("created_by" => "first_name"));
-=======
-			$pretenant->join("pretenants", "pretenants", null, array("created_by" => "first_name"));
->>>>>>> 5814fc5089e85ff4546f918363e6dad7a250e518
 			$data = current($pretenant->data);
 
 			// print_pre($data, true);
