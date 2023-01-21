@@ -110,8 +110,8 @@
 
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label for="cellphone">Celular: </label>
-                                    <input type="text" class="form-control" id="cellphone" name="cellphone" value="<?php print(isset($data["cellphone"]) ? $data["cellphone"] : "") ?>">
+                                    <label for="celphone">Celular: </label>
+                                    <input type="text" class="form-control" id="celphone" name="celphone" value="<?php print(isset($data["celphone"]) ? $data["celphone"] : "") ?>">
                                 </div>
                             </div>
 
@@ -197,6 +197,43 @@
 
                     <div class="box box-primary">
                         <div class="box-header with-border">
+                            <h3 class="box-title">Informações de registro do cadastro</h3>
+                        </div>
+
+                        <div class="box-body">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="">Login Cadastro:</label>
+                                    <input type="text" disabled class="form-control" name="" id="" value="<?php print($_SESSION[constant("cAppKey")]["credential"]["first_name"]) ?>">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="">Data Cadastro</label>
+                                    <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="">Data Ultima ALteração</label>
+                                    <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="">Status Cadastro</label>
+                                    <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
                             <h3 class="box-title">Ação</h3>
                         </div>
 
@@ -208,3 +245,4 @@
             </div>
         </div>
     </div>
+</section>

@@ -34,7 +34,7 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="postalcode">Nome: </label>
-                                    <input type="text" disabled class="form-control" id="name" name="name" value="<?php print($data["first_name"]) . " de " . $data["last_name"]?>">
+                                    <input type="text" disabled class="form-control" id="name" name="name" value="<?php print ($data["first_name"]) . " de " . $data["last_name"] ?>">
                                 </div>
                             </div>
 
@@ -154,118 +154,143 @@
                         </div>
                     </div>
 
-                    <!-- <div class="box box-primary">
+                    <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Patriminio</h3>
+                            <h3 class="box-title">Patrimonio</h3>
                         </div>
 
                         <div class="box-body">
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label for="type">Tipo de Patriminio: </label>
-                                    <select class="form-control" id="type" name="type">
-                                        <option value="">Selecione</option>
-                                        <?php
-                                        foreach ($GLOBALS["type_tenants_lists"] as $k => $v) {
-                                            printf('<option %s value="%s">%s</option>', isset($data["type"]) && $k == $data["type"] ? ' selected' : '', $k, $v);
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="first_name">Nome: </label>
-                                    <input type="text" class="form-control" id="first_name" name="first_name" value="<?php print(isset($data["first_name"]) ? $data["first_name"] : "") ?>">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="last_name">Sobrenome: </label>
-                                    <input type="text" class="form-control" id="last_name" name="last_name" value="<?php print(isset($data["last_name"]) ? $data["last_name"] : "") ?>">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4" id="cpf" style="display: none;">
-                                <div class="form-group">
-                                    <label for="cpf">CPF: </label>
-                                    <input type="text" class="form-control" name="cpf" value="<?php print(isset($data["cpf"]) ? $data["cpf"] : "") ?>">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4" id="cnpj" style="display: none;">
-                                <div class="form-group">
-                                    <label for="cnpj">CNPJ: </label>
-                                    <input type="text" class="form-control" name="cnpj" value="<?php print(isset($data["cnpj"]) ? $data["cnpj"] : "") ?>">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="rg">RG: </label>
-                                    <input type="text" class="form-control" id="rg" name="rg" value="<?php print(isset($data["rg"]) ? $data["rg"] : "") ?>">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="genre">Genero: </label>
-                                    <select class="form-control" id="genre" name="genre">
-                                        <option value="">Selecione</option>
-                                        <?php
-                                        foreach ($GLOBALS["genre_lists"] as $k => $v) {
-                                            printf('<option %s value="%s">%s</option>', isset($data["genre"]) && $k == $data["genre"] ? ' selected' : '', $k, $v);
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="nacionality">Nacionalidade: </label>
-                                    <input type="text" class="form-control" id="nacionality" name="nacionality" value="<?php print(isset($data["nacionality"]) ? $data["nacionality"] : "") ?>">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="phone">Telefone: </label>
-                                    <input type="text" class="form-control" id="phone" name="phone" value="<?php print(isset($data["phone"]) ? $data["phone"] : "") ?>">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="cellphone">Celular: </label>
-                                    <input type="text" class="form-control" id="cellphone" name="cellphone" value="<?php print(isset($data["cellphone"]) ? $data["cellphone"] : "") ?>">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="mail">E-mail: </label>
-                                    <input type="mail" class="form-control" id="mail" name="mail" value="<?php print(isset($data["mail"]) ? $data["mail"] : "") ?>">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="civil_status">Estado Civil: </label>
-                                    <select class="form-control" id="civil_status" name="civil_status">
-                                        <option value="">Selecione</option>
-                                        <?php
-                                        foreach ($GLOBALS["civil_status_list"] as $k => $v) {
-                                            printf('<option %s value="%s">%s</option>', isset($data["civil_status"]) && $k == $data["civil_status"] ? ' selected' : '', $k, $v);
-                                        }
-                                        ?>
+                                    <label for="patrimonio">Tipo do patrimonio</label>
+                                    <select name="patrimonio" class="form-control" id="patrimonio">
+                                        <option value="selecionar">Selecionar</option>
+                                        <option value="imovel">Imóvel</option>
+                                        <option value="auto">Veículo</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+
+                        <div class="box-body" id="selectYes" style="display: none;">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="tipoimovel">Tipo do Imovel</label>
+                                    <select name="tipoimovel" class="form-control" id="tipoimovel">
+                                        <option value="selecione">Selecione</option>
+                                        <option value="casa">Casa</option>
+                                        <option value="apartamento">Apartamento</option>
+                                        <option value="terreno">Terreno</option>
+                                        <option value="galpao">Galpão</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="city">Cidade</label>
+                                    <input type="text" name="cityimovel" id="cityimovel" class="form-control" value="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="ufimovel">Estado</label>
+                                    <input type="text" name="ufimovel" id="ufimovel" class="form-control" value="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="onus">Possui onus?</label>
+                                    <select name="onus" class="form-control" id="onus">
+                                        <option value="selecione">Selecione</option>
+                                        <option value="yes">Sim</option>
+                                        <option value="no">Não</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="box-body" id="selectYes" style="display: none;">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="tipoimovel">Marca</label>
+                                    <input type="text" name="marca" id="marca" class="form-control" value="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="modelauto">Modelo</label>
+                                    <input type="text" name="modelauto" id="modelauto" class="form-control" value="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="yearauto">Ano</label>
+                                    <input type="text" name="yearauto" id="yearauto" class="form-control" value="">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="onus">Possui onus?</label>
+                                    <select name="onus" class="form-control" id="onus">
+                                        <option value="selecione">Selecione</option>
+                                        <option value="yes">Sim</option>
+                                        <option value="no">Não</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Informações de registro do cadastro</h3>
+                        </div>
+
+                        <div class="box-body">
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="">Login Cadastro:</label>
+                                    <input type="text" disabled class="form-control" name="" id="" value="<?php print($_SESSION[constant("cAppKey")]["credential"]["first_name"]) ?>">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="">Data Cadastro</label>
+                                    <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="">Data Ultima ALteração</label>
+                                    <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label for="">Status Cadastro</label>
+                                    <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -280,3 +305,13 @@
             </div>
         </div>
     </div>
+</section>
+
+<script>
+        window.onload = function() {
+        document.getElementById('patrimonio').addEventListener('change', function() {
+            var style = this.value == 'imovel' ? 'block' : 'none';
+            document.getElementById('selectYes').style.display = style;
+        });
+    }
+</script>

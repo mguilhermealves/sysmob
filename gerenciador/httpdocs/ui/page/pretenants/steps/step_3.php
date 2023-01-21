@@ -81,83 +81,83 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="wage">Renda mensal - R$: </label>
-                                    <input type="text" class="form-control" id="wage" name="wage" value="<?php print(isset($data["wage"]) ? $data["wage"] : $data["phone"]) ?>">
+                                    <input type="text" class="form-control" id="wage" name="wage" value="<?php print(isset($data["wage"]) ? $data["wage"] : "" ) ?>">
                                 </div>
                             </div>
 
                             <div class="div col-lg-4">
                                 <div class="form-group">
-                                    <label for="">CEP:</label>
-                                    <input type="text" class="form-control" name="" id="">
+                                    <label for="postalcode">CEP:</label>
+                                    <input type="text" class="form-control" name="cepcompany" id="postalcode" <?php  ?>>
                                 </div>
                             </div>
                             <div class="div col-lg-4">
                                 <div class="form-group">
                                     <label for="">Endereço:</label>
-                                    <input type="text" class="form-control" name="" id="">
+                                    <input type="text" class="form-control" name="addresscompany" id="address">
                                 </div>
                             </div>
                             <div class="div col-lg-4">
                                 <div class="form-group">
                                     <label for="">Número:</label>
-                                    <input type="text" class="form-control" name="" id="">
+                                    <input type="text" class="form-control" name="numbercompany" id="number">
                                 </div>
                             </div>
 
                             <div class="div col-lg-4">
                                 <div class="form-group">
                                     <label for="">Complemento</label>
-                                    <input type="text" class="form-control" name="" id="">
+                                    <input type="text" class="form-control" name="complementcompany" id="complement">
                                 </div>
                             </div>
                             <div class="div col-lg-4">
                                 <div class="form-group">
                                     <label for="">Bairro:</label>
-                                    <input type="text" class="form-control" name="" id="">
+                                    <input type="text" class="form-control" name="neighborhoodcompany" id="district">
                                 </div>
                             </div>
                             <div class="div col-lg-4">
                                 <div class="form-group">
                                     <label for="">Cidade:</label>
-                                    <input type="text" class="form-control" name="" id="">
+                                    <input type="text" class="form-control" name="citycompany" id="city">
                                 </div>
                             </div>
 
                             <div class="div col-lg-4">
                                 <div class="form-group">
-                                    <label for="">UF:</label>
-                                    <input type="text" class="form-control" name="" id="">
+                                    <label for="uf">UF:</label>
+                                    <input type="text" class="form-control" name="ufcompany" id="uf">
                                 </div>
                             </div>
                             <div class="div col-lg-4">
                                 <div class="form-group">
-                                    <label for="">Telefone comercial:</label>
-                                    <input type="text" class="form-control" name="" id="">
+                                    <label for="phonecompany">Telefone comercial:</label>
+                                    <input type="text" class="form-control" name="phonecompany" id="phonecompany">
                                 </div>
                             </div>
                             <div class="div col-lg-4">
                                 <div class="form-group">
-                                    <label for="">E-mail comercial</label>
-                                    <input type="text" class="form-control" name="" id="">
+                                    <label for="emailcompany">E-mail comercial</label>
+                                    <input type="text" class="form-control" name="emailcompany" id="emailcompany">
                                 </div>
                             </div>
 
                             <div class="div col-lg-4">
                                 <div class="form-group">
-                                    <label for="">Profissão</label>
-                                    <input type="text" class="form-control" name="" id="">
+                                    <label for="profession">Profissão</label>
+                                    <input type="text" class="form-control" name="profession" id="profession">
                                 </div>
                             </div>
                             <div class="div col-lg-4">
                                 <div class="form-group">
-                                    <label for="">Cargo / Função:</label>
-                                    <input type="text" class="form-control" name="" id="">
+                                    <label for="office">Cargo / Função:</label>
+                                    <input type="text" class="form-control" name="office" id="office">
                                 </div>
                             </div>
                             <div class="div col-lg-4">
                                 <div class="form-group">
-                                    <label for="">Data de admissão:</label>
-                                    <input type="date" class="form-control" name="" id="">
+                                    <label for="admissioncompany">Data de admissão:</label>
+                                    <input type="date" class="form-control" name="admissioncompany" id="admissioncompany">
                                 </div>
                             </div>
 
@@ -208,8 +208,8 @@
                         <div class="box-body">
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label for="othersrents[conjuge]">Possui outras fontes de renda?</label>
-                                    <select name="othersrents[conjuge]" class="form-control" id="othersrents[conjuge]">
+                                    <label for="othersrents_conjuge">Possui outras fontes de renda?</label>
+                                    <select name="othersrents_conjuge" class="form-control" id="othersrents_conjuge">
                                         <option id="select" selected value="select">Selecione</option>
                                         <option id="yes" value="yes">Sim</option>
                                         <option id="no" value="no">Não</option>
@@ -217,19 +217,19 @@
                                 </div>
                             </div>
 
-                            <div class="row box-body" id="selectYes[conjuge]" style="display: none;">
+                            <div class="row box-body" id="selectYes_conjuge" style="display: none;">
 
                                 <div class="col-lg-8">
                                     <div class="form-group">
-                                        <label for="origin[conjuge]">Descreva a origem</label>
-                                        <input type="text" name="origin[conjuge]" id="origin[conjuge]" class="form-control" value="<?php print(isset($data["origin"]) ? $data["origin"] : "") ?>">
+                                        <label for="origin_conjuge">Descreva a origem</label>
+                                        <input type="text" name="origin_conjuge" id="origin_conjuge" class="form-control" value="<?php print(isset($data["origin"]) ? $data["origin"] : "") ?>">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="totalothersrents[conjuge]">Total (Outras) Rendas(s):</label>
-                                        <input type="text" name="totalothersrents[conjuge]" id="totalothersrents[conjuge]" class="form-control" value="<?php print(isset($data["totalothersrents"]) ? $data["totalothersrents"] : "") ?>">
+                                        <label for="totalothersrents_conjuge">Total (Outras) Rendas(s):</label>
+                                        <input type="text" name="totalothersrents_conjuge" id="totalothersrents_conjuge" class="form-control" value="<?php print(isset($data["totalothersrents"]) ? $data["totalothersrents"] : "") ?>">
                                     </div>
                                 </div>
                             </div>
