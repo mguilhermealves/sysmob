@@ -172,7 +172,7 @@
                             </div>
                         </div>
 
-                        <div class="box-body" id="selectYes" style="display: none;">
+                        <div class="box-body" id="selectimovel" style="display: none;">
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="tipoimovel">Tipo do Imovel</label>
@@ -213,7 +213,7 @@
 
                         </div>
 
-                        <div class="box-body" id="selectYes" style="display: none;">
+                        <div class="box-body" id="selectauto" style="display: none;">
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="tipoimovel">Marca</label>
@@ -311,7 +311,9 @@
         window.onload = function() {
         document.getElementById('patrimonio').addEventListener('change', function() {
             var style = this.value == 'imovel' ? 'block' : 'none';
-            document.getElementById('selectYes').style.display = style;
+            document.getElementById('selectimovel').style.display = style;
+            var style = this.value == 'auto' ? 'block' : 'none';
+            document.getElementById('selectauto').style.display = style;
         });
     }
 </script>
