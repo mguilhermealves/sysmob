@@ -23,7 +23,7 @@
                     }
                     ?>
 
-                    <input type="hidden" name="pretenants_status_id" value="3">
+                    <input type="hidden" name="pretenantsstatus_id" value="3">
 
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -34,21 +34,21 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="postalcode">Nome: </label>
-                                    <input type="text" disabled class="form-control" id="name" name="name" value="<?php print ($data["first_name"]) . " de " . $data["last_name"] ?>">
+                                    <input type="text" disabled class="form-control" id="name" value="<?php print ($data["first_name"]) . " de " . $data["last_name"] ?>">
                                 </div>
                             </div>
 
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="cpf">CPF: </label>
-                                    <input type="text" disabled class="form-control" id="cpf" name="cpf" value="<?php print($data["cpf"]) ?>">
+                                    <input type="text" disabled class="form-control" id="cpf" value="<?php print($data["cpf_cnpj"]) ?>">
                                 </div>
                             </div>
 
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="celphone">Celular: </label>
-                                    <input type="text" disabled class="form-control" id="celphone" name="celphone" value="<?php print(isset($data["celphone"]) ? $data["celphone"] : $data["phone"]) ?>">
+                                    <input type="text" disabled class="form-control" id="celphone" value="<?php print(isset($data["celphone"]) ? $data["celphone"] : $data["phone"]) ?>">
                                 </div>
                             </div>
                         </div>
@@ -81,14 +81,14 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="wage">Renda mensal - R$: </label>
-                                    <input type="text" class="form-control" id="wage" name="wage" value="<?php print(isset($data["pretenants_attach"][0]) ? $data["pretenants_attach"][0]["wage"] : "" ) ?>">
+                                    <input type="text" class="form-control" id="wage" name="wage" value="<?php print(isset($data["pretenants_attach"][0]) ? $data["pretenants_attach"][0]["wage"] : "") ?>">
                                 </div>
                             </div>
 
                             <div class="div col-lg-4">
                                 <div class="form-group">
                                     <label for="postalcode">CEP:</label>
-                                    <input type="text" class="form-control" name="cepcompany" id="postalcode" value="<?php print(isset($data["pretenants_attach"][0]) ? $data["pretenants_attach"][0]["cepcompay"] :"") ?>">
+                                    <input type="text" class="form-control" name="cepcompany" id="postalcode" value="<?php print(isset($data["pretenants_attach"][0]) ? $data["pretenants_attach"][0]["cepcompay"] : "") ?>">
                                 </div>
                             </div>
                             <div class="div col-lg-4">
@@ -157,7 +157,7 @@
                             <div class="div col-lg-4">
                                 <div class="form-group">
                                     <label for="admissioncompany">Data de admissão:</label>
-                                    <input type="date" class="form-control" name="admissioncompany" id="admissioncompany" value="<?php print(isset($data["pretenants_attach"][0]) ? $data["pretenants_attach"][0]["admissioncompany"] :"") ?>">
+                                    <input type="date" class="form-control" name="admissioncompany" id="admissioncompany" value="<?php print(isset($data["pretenants_attach"][0]) ? $data["pretenants_attach"][0]["admissioncompany"] : "") ?>">
                                 </div>
                             </div>
 
@@ -182,7 +182,6 @@
                             </div>
 
                             <div class="row box-body" id="selectYes" style="display: none;">
-
                                 <div class="col-lg-8">
                                     <div class="form-group">
                                         <label for="origin">Descreva a origem</label>
@@ -200,46 +199,45 @@
                         </div>
                     </div>
 
-                    <?php if($data["prespouses_attach"][0]["is_show_financer"] == 'yes') { ?>
-
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Outras fontes de renda (conjugê)</h3>
-                        </div>
-
-                        <div class="box-body">
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="othersrents_conjuge">Possui outras fontes de renda?</label>
-                                    <select name="othersrents_conjuge" select="seleceted" class="form-control" id="othersrents_conjuge">
-                                        <option id="select" selected value="select">Selecione</option>
-                                        <option id="yes_conjuge" value="yes_conjuge">Sim</option>
-                                        <option id="no_conjuge" value="no_conjuge">Não</option>
-                                    </select>
+                    <?php
+                    if (isset($data["prespouses_attach"][0])) {
+                        if ($data["prespouses_attach"][0]["is_show_financer"] == 'yes') { ?>
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Outras fontes de renda (conjugê)</h3>
                                 </div>
-                            </div>
 
-                            <div class="row box-body" id="selectYes_conjuge" style="display: none;">
+                                <div class="box-body">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="othersrents_conjuge">Possui outras fontes de renda?</label>
+                                            <select name="othersrents_conjuge" select="seleceted" class="form-control" id="othersrents_conjuge">
+                                                <option id="select" selected value="select">Selecione</option>
+                                                <option id="yes_conjuge" value="yes_conjuge">Sim</option>
+                                                <option id="no_conjuge" value="no_conjuge">Não</option>
+                                            </select>
+                                        </div>
+                                    </div>
 
-                                <div class="col-lg-8">
-                                    <div class="form-group">
-                                        <label for="origin_conjuge">Descreva a origem</label>
-                                        <input type="text" name="origin_conjuge" id="origin_conjuge" class="form-control" value="<?php print(isset($data["pretenants_attach"][0]) ? $data["origin_conjuge"] : "") ?>">
+                                    <div class="row box-body" id="selectYes_conjuge" style="display: none;">
+                                        <div class="col-lg-8">
+                                            <div class="form-group">
+                                                <label for="origin_conjuge">Descreva a origem</label>
+                                                <input type="text" name="origin_conjuge" id="origin_conjuge" class="form-control" value="<?php print(isset($data["pretenants_attach"][0]) ? $data["origin_conjuge"] : "") ?>">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label for="totalothersrents_conjuge">Total (Outras) Rendas(s):</label>
+                                                <input type="text" name="totalothersrents_conjuge" id="totalothersrents_conjuge" class="form-control" value="<?php print(isset($data["pretenants_attach"][0]) ? $data["pretenants_attach"][0]["totalothersrents_conjuge"] : "") ?>">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="totalothersrents_conjuge">Total (Outras) Rendas(s):</label>
-                                        <input type="text" name="totalothersrents_conjuge" id="totalothersrents_conjuge" class="form-control" value="<?php print(isset($data["pretenants_attach"][0]) ? $data["pretenants_attach"][0]["totalothersrents_conjuge"] : "") ?>">
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-
-                    </div>
-
-                    <?php } ?>
+                    <?php }
+                    } ?>
 
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -251,7 +249,6 @@
                         </div>
                     </div>
 
-
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Informações de registro do cadastro</h3>
@@ -260,35 +257,34 @@
                         <div class="box-body">
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="">Login Cadastro:</label>
-                                    <input type="text" disabled class="form-control" name="" id="" value="<?php print($_SESSION[constant("cAppKey")]["credential"]["first_name"]) ?>">
+                                    <label for="">Cadastrado por:</label>
+                                    <input type="text" disabled class="form-control" name="" id="" value="<?php print($data["usersCreated_attach"][0]["first_name"] . " " . $data["usersCreated_attach"][0]["last_name"]) ?>">
 
                                 </div>
                             </div>
+
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="">Data Cadastro</label>
-                                    <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
-
+                                    <label for="">Data do Cadastro</label>
+                                    <input type="text" disabled class="form-control" name="" id="" value="<?php print($data["created_at"]) ?>">
                                 </div>
                             </div>
+
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="">Data Ultima ALteração</label>
+                                    <label for="">Data Ultima Alteração</label>
                                     <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
-
                                 </div>
                             </div>
+
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="">Status Cadastro</label>
                                     <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
-
                                 </div>
                             </div>
                         </div>
                     </div>
-
 
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -316,7 +312,4 @@
             document.getElementById('selectYes_conjuge').style.display = style;
         });
     }
-
-   
-
 </script>

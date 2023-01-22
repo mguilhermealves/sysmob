@@ -139,21 +139,31 @@ class site_controller
 		$_SESSION[constant("cAppKey")]["companie_id"] = $info["post"]["companie_id"];
 	}
 
-	// public function loginwithlink( $info ){
-	// 	$users = new users_model();
-	// 	$users->set_filter( array( " active = 'yes' " , " md5( concat( idx, login ) ) = '" . $info["slug"] . "' " , " idx in ( select users_profiles.users_id from users_profiles, profiles where users_profiles.active = 'yes' and profiles.active = 'yes' and users_profiles.profiles_id = profiles.idx and profiles.adm = 'yes' ) "  ) ) ;
-	// 	$users->set_paginate( array( " 1 " ) ) ;
-	// 	$users->load_data();
-	// 	if( isset( $users->data[0]) ){
-	// 		$users->attach( array("profiles") , false , " limit 1 " );
-	// 		$_SESSION[ constant("cAppKey") ] = array(
-	// 			"credential" => current( $users->data )
-	// 		) ;
-	// 	}
-	// 	else{
-	// 		unset( $_SESSION[ constant("cAppKey") ] );
-	// 	}
-	// 	basic_redir( $GLOBALS["home_url"] );
-	// 	exit();
-	// }
+	public function remover_list($info)
+	{
+
+		if (!site_controller::check_login()) {
+			basic_redir($GLOBALS["home_url"]);
+		}
+
+		$boiler = new users_model();
+		$getvalue = $boiler->con->results(
+			$boiler->con->query(" SELECT * FROM " . $info["post"]["model"] . " WHERE idx = '" . $info["post"]["id"] . "' ")
+		);
+
+		$getvalue = current($getvalue);
+
+		$remove = $boiler->con->query(" UPDATE " . $info["post"]["model"] . " set active = 'no' WHERE idx = '" . $info["post"]["id"] . "' ");
+
+		switch ($info["post"]["model"]) {
+			case "pretenantspatrimonies":
+				$return = json_encode(array("error" => false, "msg" => "OK", "model" => $info["post"]["model"]));
+				break;
+			default:
+				$return = json_encode(array("error" => false, "msg" => "OK", "model" => "", "valor" => ""));
+				break;
+		}
+
+		print($return);
+	}
 }

@@ -149,11 +149,9 @@ class pretenants_controller
 			$pretenant = new pretenants_model();
 			$pretenant->set_filter(array(" idx = '" . $info["idx"] . "' "));
 			$pretenant->load_data();
-			$pretenant->attach(array("prespouses", "pretenants_status", "personalreference", "pretenantsFinances"), null, "and active = 'yes'");
-			//$pretenant->join("pretenants", "pretenants", null, array("created_by" => "first_name"));
+			$pretenant->attach(array("prespouses", "pretenantsstatus", "personalreference", "pretenantsFinances", "pretenantspatrimonies"), null, "and active = 'yes'");
+			$pretenant->join("usersCreated", "users", array("idx" => "created_by"), null);
 			$data = current($pretenant->data);
-
-			// print_pre($data, true);
 
 			$form = array(
 				"title" => "Editar Pré Locatário",
@@ -191,10 +189,12 @@ class pretenants_controller
 
 		$pretenant = new pretenants_model();
 
+		// print_pre($info, true);
+
 		// $str = str_replace('.', '', $info["post"]["value"]); // remove o ponto
 		// $info["post"]["value"] = str_replace(',', '.', $str);
 
-		if ($info["post"]["pretenants_status_id"] == 1) {
+		if ($info["post"]["pretenantsstatus_id"] == 1) {
 			$pretenant->populate($info["post"]);
 			$pretenant->save();
 
@@ -210,8 +210,8 @@ class pretenants_controller
 				$pretenant->save_attach($info, array("prespouses"));
 			}
 
-			$pretenant->save_attach($info, array("pretenants_status"));
-		} else if ($info["post"]["pretenants_status_id"] == 2) {
+			$pretenant->save_attach($info, array("pretenantsstatus"));
+		} else if ($info["post"]["pretenantsstatus_id"] == 2) {
 			$pretenant->set_filter(array(" idx = '" . $info["idx"] . "' "));
 
 			$pretenant->populate($info["post"]);
@@ -223,9 +223,9 @@ class pretenants_controller
 
 			$info["post"]["personalreference_id"] = $personalreference->con->insert_id;
 
-			$pretenant->save_attach($info, array("pretenants_status", "personalreference"));
+			$pretenant->save_attach($info, array("pretenantsstatus", "personalreference"));
 
-		} else if ($info["post"]["pretenants_status_id"] == 3) {
+		} else if ($info["post"]["pretenantsstatus_id"] == 3) {
 			$pretenant->set_filter(array(" idx = '" . $info["idx"] . "' "));
 
 			$pretenant->populate($info["post"]);
@@ -245,7 +245,7 @@ class pretenants_controller
 			$pretenant->populate($info["post"]);
 			$pretenant->save();
 
-			$pretenant->save_attach($info, array("pretenants_status", "pretenantsFinances", "personalreference"));
+			$pretenant->save_attach($info, array("pretenantsstatus", "pretenantsFinances", "personalreference"));
 		}
 
 		basic_redir(sprintf($GLOBALS["pretenant_url"], $info["idx"]));

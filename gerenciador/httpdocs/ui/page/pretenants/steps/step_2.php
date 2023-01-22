@@ -23,7 +23,7 @@
                     }
                     ?>
 
-                    <input type="hidden" name="pretenants_status_id" value="2">
+                    <input type="hidden" name="pretenantsstatus_id" value="2">
 
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -34,21 +34,21 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="postalcode">Nome: </label>
-                                    <input type="text" disabled class="form-control" id="name" name="name" value="<?php print ($data["first_name"]) . " de " . $data["last_name"] ?>">
+                                    <input type="text" class="form-control" value="<?php print ($data["first_name"]) . " " . $data["last_name"] ?>" disabled>
                                 </div>
                             </div>
 
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="cpf">CPF: </label>
-                                    <input type="text" disabled class="form-control" id="cpf" name="cpf" value="<?php print($data["cpf"]) ?>">
+                                    <input type="text" class="form-control" value="<?php print($data["cpf_cnpj"]) ?>" disabled>
                                 </div>
                             </div>
 
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="celphone">Celular: </label>
-                                    <input type="text" disabled class="form-control" id="celphone" name="celphone" value="<?php print(isset($data["celphone"]) ? $data["celphone"] : $data["phone"]) ?>">
+                                    <input type="text" class="form-control" id="celphone" name="celphone" value="<?php print(isset($data["celphone"]) ? $data["celphone"] : $data["phone"]) ?>" disabled>
                                 </div>
                             </div>
                         </div>
@@ -160,100 +160,46 @@
                         </div>
 
                         <div class="box-body">
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <label for="patrimonio">Tipo do patrimonio</label>
-                                    <select name="patrimonio" class="form-control" id="patrimonio">
-                                        <option value="selecionar">Selecionar</option>
-                                        <option value="imovel">Imóvel</option>
-                                        <option value="auto">Veículo</option>
-                                    </select>
-                                </div>
+                            <div class="col-lg-12 text-right">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#patrimony_modal">Adicionar Patrimonio</button>
                             </div>
                         </div>
 
-                        <div class="box-body" id="selectimovel" style="display: none;">
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="tipoimovel">Tipo do Imovel</label>
-                                    <select name="tipoimovel" class="form-control" id="tipoimovel">
-                                        <option value="selecione">Selecione</option>
-                                        <option value="casa">Casa</option>
-                                        <option value="apartamento">Apartamento</option>
-                                        <option value="terreno">Terreno</option>
-                                        <option value="galpao">Galpão</option>
-                                    </select>
-                                </div>
+                        <div class="box-body">
+                            <div class="col-lg-12">
+                                <table class="table table-striped table-inverse table-responsive" id="table-patrimonies">
+                                    <thead class="thead-inverse">
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Tipo</th>
+                                            <th>Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php if (isset($data["pretenantspatrimonies_attach"][0])) {
+                                            foreach ($data["pretenantspatrimonies_attach"] as $k => $pretenantspatrimonies) {
+                                        ?>
+                                                <tr id="row_<?php print($pretenantspatrimonies["idx"]) ?>">
+                                                    <td scope="row"><?php print($pretenantspatrimonies["idx"]) ?></td>
+                                                    <td><?php print($pretenantspatrimonies["type_patrimony"]) ?></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-info edit_modal" title="Editar Patrimonio" data-toggle="modal" data-target="#editpatrimony_modal_<?php print($pretenantspatrimonies["idx"]) ?>">
+                                                            <i class="bi bi-pencil-square"></i> Visualizar
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger btn-remover-list" data-id="<?php print($pretenantspatrimonies["idx"]) ?>" data-model="pretenantspatrimonies">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <?php include(constant("cRootServer") . "ui/page/pretenants/modals/edit_patrimony.php"); ?>
+                                        <?php }
+                                        } ?>
+                                    </tbody>
+                                </table>
                             </div>
-
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="city">Cidade</label>
-                                    <input type="text" name="cityimovel" id="cityimovel" class="form-control" value="">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="ufimovel">Estado</label>
-                                    <input type="text" name="ufimovel" id="ufimovel" class="form-control" value="">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="onus">Possui onus?</label>
-                                    <select name="onus" class="form-control" id="onus">
-                                        <option value="selecione">Selecione</option>
-                                        <option value="yes">Sim</option>
-                                        <option value="no">Não</option>
-                                    </select>
-                                </div>
-                            </div>
-
                         </div>
-
-                        <div class="box-body" id="selectauto" style="display: none;">
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="tipoimovel">Marca</label>
-                                    <input type="text" name="marca" id="marca" class="form-control" value="">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="modelauto">Modelo</label>
-                                    <input type="text" name="modelauto" id="modelauto" class="form-control" value="">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="yearauto">Ano</label>
-                                    <input type="text" name="yearauto" id="yearauto" class="form-control" value="">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="onus">Possui onus?</label>
-                                    <select name="onus" class="form-control" id="onus">
-                                        <option value="selecione">Selecione</option>
-                                        <option value="yes">Sim</option>
-                                        <option value="no">Não</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                        </div>
-
                     </div>
-
-
-
-
-
 
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -263,30 +209,30 @@
                         <div class="box-body">
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="">Login Cadastro:</label>
-                                    <input type="text" disabled class="form-control" name="" id="" value="<?php print($_SESSION[constant("cAppKey")]["credential"]["first_name"]) ?>">
+                                    <label for="">Cadastrado por:</label>
+                                    <input type="text" disabled class="form-control" name="" id="" value="<?php print($data["usersCreated_attach"][0]["first_name"] . " " . $data["usersCreated_attach"][0]["last_name"]) ?>">
 
                                 </div>
                             </div>
+
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="">Data Cadastro</label>
-                                    <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
-
+                                    <label for="">Data do Cadastro</label>
+                                    <input type="text" disabled class="form-control" name="" id="" value="<?php print($data["created_at"]) ?>">
                                 </div>
                             </div>
+
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="">Data Ultima ALteração</label>
+                                    <label for="">Data Ultima Alteração</label>
                                     <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
-
                                 </div>
                             </div>
+
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="">Status Cadastro</label>
                                     <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
-
                                 </div>
                             </div>
                         </div>
@@ -307,13 +253,6 @@
     </div>
 </section>
 
-<script>
-        window.onload = function() {
-        document.getElementById('patrimonio').addEventListener('change', function() {
-            var style = this.value == 'imovel' ? 'block' : 'none';
-            document.getElementById('selectimovel').style.display = style;
-            var style = this.value == 'auto' ? 'block' : 'none';
-            document.getElementById('selectauto').style.display = style;
-        });
-    }
-</script>
+
+<!-- Modals -->
+<?php include(constant("cRootServer") . "ui/page/pretenants/modals/add_patrimony.php"); ?>

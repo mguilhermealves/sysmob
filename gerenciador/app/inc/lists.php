@@ -304,3 +304,8 @@ $type_relation_lists = array(
   "2" => "Irmão/Irmã",
   "3" => "Tio/Tia"
 );
+
+$typepatrimonies_lists = array(
+  "Imovel" => "Imovel",
+  "Veiculo" => "Veiculo"
+);

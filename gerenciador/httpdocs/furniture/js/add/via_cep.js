@@ -67,8 +67,3 @@ function get_cep(field){
         limpa_formulário_cep();
     }
 }
-
-
-$($("#form_curso_presencial, #form_curso_hibrido, #form_curso_palestra").find( "#courseCEP") ).bind("blur",function(){
-    return get_cep( $(this) ); 
-});

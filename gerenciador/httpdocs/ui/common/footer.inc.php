@@ -33,8 +33,8 @@
 <!-- sweetalert2 -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-<script type='text/javascript' src='<?php printf("%s%s", constant("cFurniture"), "js/jquery.inputmask.bundle.js") ?>'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+<!-- <script type='text/javascript' src='<?php printf("%s%s", constant("cFurniture"), "js/jquery.inputmask.bundle.js") ?>'></script>
 <script type='text/javascript' src='<?php printf("%s%s", constant("cFurniture"), "js/jquery-autocomplete.js") ?>'></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script> -->
@@ -76,6 +76,12 @@
 
 <script src="<?php printf("%s%s", constant("cFurniture"), "AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js") ?>"></script>
 <script src="<?php printf("%s%s", constant("cFurniture"), "AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js") ?>"></script>
+
+<script type="text/javascript" src="<?php printf("%s%s", constant("cFurniture"), "js/jquery.serializejson.js") ?>"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script type='text/javascript' src='<?php printf("%s%s", constant("cFurniture"), "js/site.js") ?>'></script>
 
 <script>
   $.widget.bridge('uibutton', $.ui.button);

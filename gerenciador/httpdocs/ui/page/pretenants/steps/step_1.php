@@ -23,7 +23,7 @@
                     }
                     ?>
 
-                    <input type="hidden" name="pretenants_status_id" value="1">
+                    <input type="hidden" name="pretenantsstatus_id" value="1">
 
                     <div class="box box-primary">
                         <div class="box-header with-border">
@@ -47,29 +47,8 @@
 
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <label for="type">Tipo: </label>
-                                    <select class="form-control" id="type" name="type">
-                                        <option value="">Selecione</option>
-                                        <?php
-                                        foreach ($GLOBALS["type_tenants_lists"] as $k => $v) {
-                                            printf('<option %s value="%s">%s</option>', isset($data["type"]) && $k == $data["type"] ? ' selected' : '', $k, $v);
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4" id="cpf" style="display: none;">
-                                <div class="form-group">
-                                    <label for="cpf">CPF: </label>
-                                    <input type="text" class="form-control" name="cpf" value="<?php print(isset($data["cpf"]) ? $data["cpf"] : "") ?>">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4" id="cnpj" style="display: none;">
-                                <div class="form-group">
-                                    <label for="cnpj">CNPJ: </label>
-                                    <input type="text" class="form-control" name="cnpj" value="<?php print(isset($data["cnpj"]) ? $data["cnpj"] : "") ?>">
+                                    <label for="cpf_cnpj">CPF/CNPJ: </label>
+                                    <input type="text" class="form-control" id="cpf_cnpj" name="cpf_cnpj" value="<?php print(isset($data["cpf_cnpj"]) ? $data["cpf_cnpj"] : "") ?>">
                                 </div>
                             </div>
 
@@ -104,14 +83,14 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="phone">Telefone: </label>
-                                    <input type="text" class="form-control" id="phone" name="phone" value="<?php print(isset($data["phone"]) ? $data["phone"] : "") ?>">
+                                    <input type="text" class="form-control phone" name="phone" value="<?php print(isset($data["phone"]) ? $data["phone"] : "") ?>">
                                 </div>
                             </div>
 
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="celphone">Celular: </label>
-                                    <input type="text" class="form-control" id="celphone" name="celphone" value="<?php print(isset($data["celphone"]) ? $data["celphone"] : "") ?>">
+                                    <input type="text" class="form-control celphone" name="celphone" value="<?php print(isset($data["celphone"]) ? $data["celphone"] : "") ?>">
                                 </div>
                             </div>
 
@@ -138,7 +117,7 @@
                         </div>
                     </div>
 
-                    <div class="box box-primary">
+                    <div class="box box-primary" id="dados-conjuge" style="display:none;">
                         <div class="box-header with-border">
                             <h3 class="box-title">Dados do Conjuge</h3>
                         </div>
@@ -175,7 +154,7 @@
                             <div class="col-lg-4">
                                 <div class="form-group">
                                     <label for="celphone">Celular: </label>
-                                    <input type="text" class="form-control" id="celphone" name="spouse[celphone]" value="<?php print(isset($data["prespouses_attach"]) ? $data["prespouses_attach"][0]["celphone"] : "") ?>">
+                                    <input type="text" class="form-control celphone" name="spouse[celphone]" value="<?php print(isset($data["prespouses_attach"]) ? $data["prespouses_attach"][0]["celphone"] : "") ?>">
                                 </div>
                             </div>
 
@@ -197,48 +176,11 @@
 
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Informações de registro do cadastro</h3>
-                        </div>
-
-                        <div class="box-body">
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="">Login Cadastro:</label>
-                                    <input type="text" disabled class="form-control" name="" id="" value="<?php print($_SESSION[constant("cAppKey")]["credential"]["first_name"]) ?>">
-
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="">Data Cadastro</label>
-                                    <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
-
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="">Data Ultima ALteração</label>
-                                    <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
-
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="form-group">
-                                    <label for="">Status Cadastro</label>
-                                    <input type="text" disabled class="form-control" name="" id="" value="<?php ?>">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
                             <h3 class="box-title">Ação</h3>
                         </div>
 
                         <div class="box-footer text-center">
-                            <button type="submit" name="btn_save" class="btn btn-primary btn-sm"><?php print(isset($data["idx"]) ? "Salvar" : "Cadastrar") ?></button>
+                            <button type="submit" name="btn_save" class="btn btn-primary btn-sm">Salvar e Próxima Etapa</button>
                         </div>
                     </div>
                 </form>
