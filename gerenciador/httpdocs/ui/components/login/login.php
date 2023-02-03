@@ -11,7 +11,7 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <img class="img-fluid" src="<?php printf("%s%s", constant("cFurniture"), "img/logo.png") ?>" style="max-width: 300px; margin:0 auto; float:none">
+            <img class="img-fluid" id="logo-login" src="<?php printf("%s%s", constant("cFurniture"), "img/logo.jpeg") ?>" style="max-width: 300px; margin:0 auto; float:none">
         </div>
 
         <div class="login-box-body">
@@ -51,3 +51,9 @@
         });
     });
 </script>
+
+<style>
+    #logo-login {
+        mix-blend-mode: multiply;
+    }
+</style>

@@ -57,7 +57,7 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Perfis Disponiveis</label>
-                            <select class="form-control select2" multiple="multiple" data-placeholder="Selecione um ou mais perfis" style="width: 100%;">
+                            <select class="form-control select2" multiple="multiple" name="profiles_id[]" data-placeholder="Selecione um ou mais perfis" style="width: 100%;">
                                 <?php foreach (profiles_controller::data4select("idx", array(" idx > 1 and active = 'yes' "), "name") as $k => $v) { ?>
                                     <option value="<?php print($k) ?>"><?php print($v) ?></option>
                                 <?php } ?>

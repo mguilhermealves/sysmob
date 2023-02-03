@@ -1,6 +1,6 @@
 <?php 
 class properties_model extends DOLModel{
-	protected $field = array( " idx " , " created_at " , " created_by " , " modified_at " , "modified_by " , " address " , " number_address " , " complement " , " code_postal " , " district ", " city " , " uf " , " type_propertie " , " object_propertie " , " deadline_contract " , " financial_propertie " , " financer_name ", "price_condominium", "price_location", "percentual_iptu", "price_sale", "price_iptu", "porcent_propertie", "is_swap", "comments", "is_used", "imagem", "docs", "instalation_enel", "instalation_sabesp", "administrative_fees", "classification") ;
+	protected $field = array( " idx " , " created_at " , " created_by " , " modified_at " , "modified_by " , " removed_at " , " removed_by " , " endereco ", " numero ", " complemento ", " bairro ", " cidade ", " estado ", " objetivo ", " tipo_imovel ", " finalidade ", " area_util ", " area_total ", " qtd_dormitorios ", " qtd_suites ", " qtd_sala_estar ", " qtd_sala_jantar ", " qtd_copa ", " qtd_cozinha ", " qtd_banheiro ", " qtd_vaga ", " estado_imovel ", " vlr_aluguel ", " vlr_iptu ", " vlr_condominio ", " descritivo_imovel ") ;
 	protected $filter = array( " active = 'yes' " ) ;
 	function __construct( $bd = false  ) {
 		return parent::__construct( "properties" , $bd );
