@@ -98,7 +98,7 @@
                         <tr>
                             <td><?php print($v["position"]); ?></td>
                             <td><?php print($v["name"]); ?></td>
-                            <td><?php print(isset($v["profiles_attach"][0]) ? implode(", ", array_column($v["profiles_attach"], "name")) : ""); ?></td>
+                            <td><?php print(isset($v["profiles_attach"][0]["name"]) && count($v["profiles_attach"][0]) ? implode(", ", array_column($v["profiles_attach"], "name")) : ""); ?></td>
                             <td><?php print( $menus_parents[ $v["parent"] ] ) ?></td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href="<?php printf($form["pattern"]["action"], $v["idx"]) ?>"><i class="bi bi-pencil"></i> Editar</a>

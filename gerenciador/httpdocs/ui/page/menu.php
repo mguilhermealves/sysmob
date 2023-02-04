@@ -40,14 +40,12 @@
 
                         <div class="form-group">
                             <label for="">URL</label>
-                            <select class="form-control select2" name="urls_id" style="width: 100%;">
-                                <option value="-1" <?php print(!isset($data["urls_attach"][0]) || $data["urls_attach"][0]["idx"] == "-1" ? " selected='selected' " : "") ?>>--- RAIZ ---</option>
-                                <?php
-                                foreach (urls_controller::data4select("idx", array(" idx > 0 "), "name") as $k => $v) {
-                                    printf('<option value="%s"%s>%s</option>' . "\n", $k, isset($data["urls_attach"][0]) && $data["urls_attach"][0]["idx"] == $k ? ' selected="selected"' : '', $v);
-                                }
-                                ?>
-                            </select>
+                            <select name="parent" class="form-control select2">
+                                        <option value="-1" <?php print( !isset( $data["urls_attach"] ) || ( isset( $data["urls_attach"][0] ) && (int)$data["urls_attach"][0]["idx"] == -1 ) ? ' selected="selected"' : '' ) ?>>--Raiz--</option>
+                                        <?php foreach( urls_controller::data4select( "idx" , array( " idx > 0 " ) , "name" ) as $k => $v ){ ?>
+                                        <option value="<?php print( $k ) ?>" <?php print( isset( $data["urls_attach"][0] ) && (int)$data["urls_attach"][0]["idx"] == $k ? ' selected="selected"' : '' ) ?>><?php print( $v ) ?></option>
+                                        <?php } ?>
+                                    </select>
                         </div>
 
                         <div class="form-group">
@@ -57,15 +55,15 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Perfis Disponiveis</label>
-                            <select class="form-control select2" multiple="multiple" name="profiles_id[]" data-placeholder="Selecione um ou mais perfis" style="width: 100%;">
-                                <?php foreach (profiles_controller::data4select("idx", array(" idx > 1 and active = 'yes' "), "name") as $k => $v) { ?>
-                                    <option value="<?php print($k) ?>"><?php print($v) ?></option>
+                            <select class="form-control select2" multiple="multiple" name="profiles_id[1]" data-placeholder="Selecione um ou mais perfis" style="width: 100%;">
+                                <?php foreach (profiles_controller::data4select("idx", array(" active = 'yes' ")) as $k => $v) { ?>
+                                    <option value="<?php print($k) ?>" <?php print( isset( $data["profiles_attach"][0] ) && in_array( $k , array_column( $data["profiles_attach"] , "idx" ) ) ? "selected" : "" ) ?>><?php print($v) ?></option>
                                 <?php } ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputIcone">Icone</label>
-                            <input type="email" class="form-control" id="exampleInputIcone" placeholder="Icone do Menu">
+                            <input type="text" name="icon" class="form-control" id="exampleInputIcone" placeholder="Icone do Menu">
                         </div>
                     </div>
 

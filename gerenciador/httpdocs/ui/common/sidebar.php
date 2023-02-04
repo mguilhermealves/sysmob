@@ -203,10 +203,11 @@
                     </li>
                 <?php } else { ?>
                     <li>
-                        <a href="<?php print($GLOBALS[$v["urls_attach"][0]["slug"] . "_url"]) ?>"><i class="fa fa-<?php print($v["icon"]); ?>"></i> <span><?php print($v["name"]) ?></span></a>
+                        <a href="<?php print($GLOBALS[$r["urls_attach"][0]["slug"]] . "_url") ?>"><i class="fa fa-<?php print($v["icon"]); ?>"></i> <span><?php print($v["name"]) ?></span></a>
                     </li>
             <?php }
             }  ?>
         </ul>
     </section>
 </aside>
+
