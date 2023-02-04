@@ -33,7 +33,8 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
+                                        <i class="fa fa-warning text-yellow"></i> Very long description here that may
+                                        not fit into the
                                         page and may cause design problems
                                     </a>
                                 </li>
@@ -145,7 +146,8 @@
                         <li class="user-header">
                             <p><?php print($_SESSION[constant("cAppKey")]["credential"]["first_name"]) ?></p>
                             <br>
-                            <p><?php print($_SESSION[constant("cAppKey")]["credential"]["profiles_attach"][0]["name"]) ?></p>
+                            <p><?php print($_SESSION[constant("cAppKey")]["credential"]["profiles_attach"][0]["name"]) ?>
+                            </p>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
@@ -167,7 +169,8 @@
     <section class="sidebar">
         <div class="user-panel">
             <div class="pull-left info">
-                <p><?php print($_SESSION[constant("cAppKey")]["credential"]["first_name"] . " - " . $_SESSION[constant("cAppKey")]["credential"]["profiles_attach"][0]["name"]) ?></p>
+                <p><?php print($_SESSION[constant("cAppKey")]["credential"]["first_name"] . " - " . $_SESSION[constant("cAppKey")]["credential"]["profiles_attach"][0]["name"]) ?>
+                </p>
             </div>
         </div>
 
@@ -186,7 +189,8 @@
             $b->attach_son("menus", array("urls"));
 
             foreach ($b->data as $k => $v) {
-                if (isset($v["menus_attach"][0])) { ?>
+                if (isset($v["menus_attach"])) {
+            ?>
                     <li class="treeview">
                         <a href="#">
                             <i class="<?php print("fa fa-" . $v["icon"]) ?>"></i> <span><?php print($v["name"]) ?></span>
@@ -203,11 +207,10 @@
                     </li>
                 <?php } else { ?>
                     <li>
-                        <a href="<?php print($GLOBALS[$r["urls_attach"][0]["slug"]] . "_url") ?>"><i class="fa fa-<?php print($v["icon"]); ?>"></i> <span><?php print($v["name"]) ?></span></a>
+                        <a href="<?php print($GLOBALS[$r["urls_attach"][0]["slug"] . "_url"]) ?>"><i class="fa fa-<?php print($v["icon"]); ?>"></i> <span><?php print($v["name"]) ?></span></a>
                     </li>
             <?php }
             }  ?>
         </ul>
     </section>
 </aside>
-

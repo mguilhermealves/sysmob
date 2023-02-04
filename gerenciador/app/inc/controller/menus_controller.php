@@ -41,19 +41,24 @@ class menus_controller
             "title" => "Cadastrar Menu"
             , "url" => $GLOBALS["newmenu_url"] 
         );
-        $info["get"]["done"] =  set_url( $GLOBALS["menus_url"] , $info["get"] );
-        if( isset( $info["idx"] ) && (int)$info["idx"] > 0 ){
-            $boiler = new menus_model();
-            $boiler->set_filter( array( " idx = '" . $info["idx"] . "'" ) ) ;
-            $boiler->load_data();
-            $boiler->set_paginate( array(1) ) ;
-            $boiler->attach( array("profiles", "urls")) ;
-            $data = current( $boiler->data ) ;
-            $form["title"] = "Editar Menu";
-            $form["url"] = sprintf( $GLOBALS["menu_url"] , $info["idx"] ) ;
-        }
+        if (isset($info["idx"])) {
+			$boiler = new menus_model();
+			$boiler->set_filter(array(" idx = '" . $info["idx"] . "' "));
+			$boiler->load_data();
+			$boiler->attach(array("profiles", "urls"));
+			$data = current($boiler->data);
+			$form = array(
+				"url" => sprintf($GLOBALS["menu_url"], $info["idx"]), 
+				"done" => isset($info["get"]["done"]) ? $info["get"]["done"] : set_url($GLOBALS["menus_url"], $info["get"])
+			);
+		} else {
+			$data = array();
+			$form = array(
+				"url" => $GLOBALS["newmenu_url"], 
+				"done" => isset($info["get"]["done"]) ? $info["get"]["done"] : set_url($GLOBALS["menus_url"], $info["get"])
+			);
+		}
 
-		// print_pre($data, true);
 		$page = 'menus';
 		include(constant("cRootServer") . "ui/common/header.inc.php");
 		include(constant("cRootServer") . "ui/common/head.inc.php");
@@ -92,7 +97,7 @@ class menus_controller
 		$menus_parents["-1"] = "--- Raiz ---";
 		$total = $boiler->con->result($boiler->con->select(" ifnull( count( idx ) , 0 ) as s ", " menus ", " where " . implode(" and ", $filter)), "s", 0);
 
-		// print_pre($menus_parents, true);
+		// print_pre($data, true);
 
 		switch ($info["format"]) {
 			case ".json":
@@ -132,7 +137,24 @@ class menus_controller
 		$boiler = new menus_model();
 		if (isset($info["idx"]) && (int)$info["idx"] > 0) {
 			$boiler->set_filter(array(" idx = '" . $info["idx"] . "' "));
-		} 
+		} else {
+			$info["post"]["slug"] = generate_key(6);
+		}
+		if (isset($_FILES["thumbnail"]) && is_file($_FILES["thumbnail"]["tmp_name"])) {
+
+			$ext = preg_replace("/^.+\.(.+)$/", "$1",  $_FILES["thumbnail"]["name"]);
+			$file = "furniture/upload/icone/" . (isset($info["idx"]) && (int)$info["idx"] > 0 ? $info["idx"] : generate_key(6)) . "." . $ext;
+
+			if (!file_exists(dirname(constant("cRootServer") . $file))) {
+				mkdir(dirname(constant("cRootServer") . $file), true);
+				chmod(dirname(constant("cRootServer") . $file), 0775);
+			}
+			if (file_exists(constant("cRootServer") . $file)) {
+				unlink(constant("cRootServer") . $file);
+			}
+			move_uploaded_file($_FILES["thumbnail"]["tmp_name"], constant("cRootServer") . $file);
+			$info["post"]["image"] = $file;
+		}
 
 		$boiler->populate($info["post"]);
 		$boiler->save();
