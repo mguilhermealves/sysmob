@@ -11,47 +11,12 @@
 
 <section class="content">
     <div class="row">
-
-        <!-- Button trigger modal -->
-        <form class="col-lg-12 mb-4" id="frm_filter" method="GET" action="<?php print($form["pattern"]["search"]) ?>">
-            <input type="hidden" name="paginate" id="paginate" value="<?php print($paginate) ?>">
-            <input type="hidden" name="ordenation" id="ordenation" value="<?php print($ordenation) ?>">
-            <input type="hidden" name="sr" id="sr" value="<?php print($info["sr"]) ?>">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="h6 text-blue">Filtros de Busca:</p>
-                    <hr>
-                </div>
-
-                <div class="col-sm-12 col-lg-4">
-                    <div class="form-group">
-                        <label for="filter_name">Nome:</label>
-                        <input type="text" id="filter_name" class="form-control" name="filter_name" value="<?php print(isset($info["get"]["filter_name"]) ? $info["get"]["filter_name"] : "") ?>" class="form-control" placeholder="Digite o Nome">
-                    </div>
-                </div>
-
-                <div class="col-sm-12 col-lg-8">
-
-                </div>
-
-                <div class="col-sm-12 col-lg-2">
-                    <label for="btn_export">&nbsp;</label>
-                    <button id="btn_export" type="submit" class="btn btn-primary btn-block btn-sm"><i class="bi bi-file-excel"></i> Exportar</button>
-                </div>
-
-                <div class="col-sm-12 col-lg-2">
-                    <label for="btn_search">&nbsp;</label>
-                    <button id="btn_search" type="submit" class="btn btn-primary btn-block btn-sm"><i class="bi bi-search"></i> Pesquisar</button>
-                </div>
-                <div class="col-sm-12 col-lg-2">
-                    <label for="btn_add">&nbsp;</label>
-                    <a id="btn_add" class="btn btn-primary btn-block btn-sm" title="Adicionar Propriedade" href="<?php print($form["pattern"]["new"]) ?>"><i class="bi bi-plus-circle"></i> Cadastrar</a>
-                </div>
-            </div>
-            <hr>
-        </form>
-        <!-- Container Begin -->
-        <div class="col-lg-12">
+        <div class="col-lg-2 horizontal-right">
+            <label for="btn_add">&nbsp;</label>
+            <a id="btn_add" class="btn btn-primary btn-block btn-sm" title="Adicionar Propriedade" href="<?php print($form["pattern"]["new"]) ?>"><i class="bi bi-plus-circle"></i> Adicionar</a>
+        </div>
+        
+        <div class="col-lg-12 margin-top-50">
             <?php html_notification_print(); ?>
 
             <table class="table table-striped table-inverse table-hover" id="properties-table">

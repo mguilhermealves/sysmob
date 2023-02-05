@@ -20,33 +20,6 @@ class properties_controller
 		$done = array();
 		$filter = array(" active = 'yes' ");
 
-		if (isset($info["get"]["paginate"]) && !empty($info["get"]["paginate"])) {
-			$done["paginate"] = $info["get"]["paginate"];
-		}
-		if (isset($info["get"]["sr"]) && !empty($info["get"]["sr"])) {
-			$done["sr"] = $info["get"]["sr"];
-		}
-		if (isset($info["get"]["ordenation"]) && !empty($info["get"]["ordenation"])) {
-			$done["ordenation"] = $info["get"]["ordenation"];
-		}
-		if (isset($info["get"]["filter_id"]) && !empty($info["get"]["filter_id"])) {
-			$done["filter_id"] = $info["get"]["filter_id"];
-			$filter["filter_id"] = " idx like '%" . $info["get"]["filter_id"] . "%' ";
-		}
-
-		if (isset($info["get"]["filter_title"]) && !empty($info["get"]["filter_title"])) {
-			$done["filter_title"] = $info["get"]["filter_title"];
-			$filter["filter_title"] = " trail_title like '%" . $info["get"]["filter_title"] . "%' ";
-		}
-
-		if (isset($info["get"]["filter_name"]) && !empty($info["get"]["filter_name"])) {
-			$done["filter_name"] = $info["get"]["filter_name"];
-			$filter["filter_name"] = " trail_title like '%" . $info["get"]["filter_name"] . "%' ";
-		}
-		if (isset($info["get"]["filter_trail_status"]) && !empty($info["get"]["filter_trail_status"])) {
-			$done["filter_trail_status"] = $info["get"]["filter_trail_status"];
-			$filter["filter_trail_status"] = " trail_status = '" . $info["get"]["filter_trail_status"] . "' ";
-		}
 		return array($done, $filter);
 	}
 
@@ -56,32 +29,14 @@ class properties_controller
 			basic_redir($GLOBALS["home_url"]);
 		}
 
-		$paginate = isset($info["get"]["paginate"]) && (int)$info["get"]["paginate"] > 20 ? $info["get"]["paginate"] : 20;
-		$ordenation = isset($info["get"]["ordenation"]) ? preg_replace("/-/", " ", $info["get"]["ordenation"]) : 'idx asc';
-
 		list($done, $filter) = $this->filter($info);
 
 		$properties = new properties_model();
 
-		if ($info["format"] != ".json") {
-			$properties->set_paginate(array($info["sr"], $paginate));
-		} else {
-			$properties->set_paginate(array(0, 900000));
-		}
-
 		$properties->set_filter($filter);
-		$properties->set_order(array($ordenation));
 		list($total, $data) = $properties->return_data();
 
 		switch ($info["format"]) {
-			case ".json":
-				header('Content-type: application/json');
-				echo json_encode(
-					array(
-						"total" => array("total" => $total), "row" => $data
-					)
-				);
-				break;
 			default:
 				$page = 'Propriedades';
 
