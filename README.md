@@ -1,2 +1,1 @@
-"# aartelecom-lego" 
 "# sysmob" 
