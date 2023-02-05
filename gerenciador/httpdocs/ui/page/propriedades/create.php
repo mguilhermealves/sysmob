@@ -36,22 +36,22 @@
                                 <div class="box-body">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="clients_id">Codigo do Cliente: </label>
-                                            <input type="text" class="form-control" id="clients_id" name="clients_id">
+                                            <label for="locators_id">Codigo do Locatário: </label>
+                                            <input type="text" class="form-control" id="locators_id" name="locators_id">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="clients_name">Razão Social: </label>
-                                            <input type="text" class="form-control" id="clients_name" name="clients_name">
+                                            <label for="locators_name">Nome do Locatário(a): </label>
+                                            <input type="text" class="form-control" id="locators_name" name="locators_name">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label for="clients_cnpj">CNPJ: </label>
-                                            <input type="text" class="form-control" id="clients_cnpj" name="clients_cnpj">
+                                            <label for="locators_cpf">CPF: </label>
+                                            <input type="text" class="form-control" id="locators_cpf" name="locators_cpf">
                                         </div>
                                     </div>
                                 </div>

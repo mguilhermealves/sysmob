@@ -51,64 +51,21 @@
             <hr>
         </form>
         <!-- Container Begin -->
-        <div class="col-lg-12" style="overflow: auto;">
+        <div class="col-lg-12">
             <?php html_notification_print(); ?>
 
-            <table class="table table-striped table-inverse table-hover">
+            <table class="table table-striped table-inverse table-hover" id="properties-table">
                 <thead class="thead-inverse">
                     <tr>
-                        <th><a style="color:#707070; text-decoration:none" href="<?php print(set_url($form["pattern"]["search"], array("ordenation" => $ordenation_name))) ?>">Nome do Produto <i class="<?php print($ordenation_name_ordenation) ?>"></i></a></th>
-                        <th><a style="color:#707070; text-decoration:none" href="<?php print(set_url($form["pattern"]["search"], array("ordenation" => $ordenation_price))) ?>">Valor do Produto <i class="<?php print($ordenation_price_ordenation) ?>"></i></a></th>
-                        <th>Ações</th>
+                        <th>Código da Propriedade</th>
+                        <th>CEP </th>
+                        <th>Endereço</th>
+                        <th>Número</th>
+                        <th>Bairro</th>
+                        <th>Cidade</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th colspan="3">
-                            <div class="row col-lg-12">
-                                <div class="col-lg-3 form-group">
-                                    <select class="form-control" id="select_paginage" class="col-lg-3 ">
-                                        <option <?php print($paginate == 20 ? 'selected="selected"' : '') ?> value="20">20</option>
-                                        <option <?php print($paginate == 50 ? 'selected="selected"' : '') ?> value="50">50</option>
-                                        <option <?php print($paginate == 100 ? 'selected="selected"' : '') ?> value="100">100</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6 d-flex justify-content-center form-group text-center">
-                                    <button type="button" id="btn_sr_first" class=" btn ">|<< /button>
-                                            <button type="button" id="btn_sr_previus" class=" btn ">
-                                                << /button>
-                                                    <button type="button" id="btn_sr_next" class=" btn ">></button>
-                                                    <button type="button" id="btn_sr_last" class=" btn ">>|</button>
-                                </div>
-                                <p class="col-lg-3 text-right"><?php print(($info["sr"] + 1) . " de " . $total) ?></p>
-                            </div>
-                        </th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    <?php
-                    if ($total > 0) {
-                        foreach ($data as $v) { ?>
-                            <tr>
-                                <td><?php print($v["endereco"]); ?></td>
-                                <td><?php print($v["numero"]); ?></td>
-                                <th>
-                                    <a type="button" class="btn btn-primary btn-sm" href="<?php print(set_url(sprintf($form["pattern"]["action"], $v["idx"]), array("done" => urlencode($form["pattern"]["search"])))) ?>"><i class="bi bi-pencil-square"></i> Editar</a>
-                                </th>
-                            </tr>
-                        <?php
-                        }
-                    } else {
-                        ?>
-                        <tr>
-                            <td colspan="3">
-                                <p class="alert alert-warning text-center">Nenhum produto encontrado...</p>
-                            </td>
-                        </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
             </table>
         </div>
     </div>

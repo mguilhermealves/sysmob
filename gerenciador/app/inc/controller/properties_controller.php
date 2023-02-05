@@ -61,17 +61,17 @@ class properties_controller
 
 		list($done, $filter) = $this->filter($info);
 
-		$manuals = new properties_model();
+		$properties = new properties_model();
 
 		if ($info["format"] != ".json") {
-			$manuals->set_paginate(array($info["sr"], $paginate));
+			$properties->set_paginate(array($info["sr"], $paginate));
 		} else {
-			$manuals->set_paginate(array(0, 900000));
+			$properties->set_paginate(array(0, 900000));
 		}
 
-		$manuals->set_filter($filter);
-		$manuals->set_order(array($ordenation));
-		list($total, $data) = $manuals->return_data();
+		$properties->set_filter($filter);
+		$properties->set_order(array($ordenation));
+		list($total, $data) = $properties->return_data();
 
 		switch ($info["format"]) {
 			case ".json":
@@ -83,9 +83,8 @@ class properties_controller
 				);
 				break;
 			default:
-				$page = 'Manuais';
+				$page = 'Propriedades';
 
-				$sidebar_color = "rgba(127, 255, 212, 1)";
 				$form = array(
 					"done" => rawurlencode(!empty($done) ? set_url($GLOBALS["properties_url"], $done) : $GLOBALS["properties_url"]), "pattern" => array(
 						"new" => $GLOBALS["newproperty_url"],
@@ -94,47 +93,17 @@ class properties_controller
 					)
 				);
 
-				$ordenation_name = 'display_position-asc';
-				$ordenation_name_ordenation = 'bi bi-arrow-up';
-				$ordenation_trail = 'trail_title-asc';
-				$ordenation_trail_ordenation = 'fas fa-border-none';
-				$ordenation_modifiedat = 'modified_at-asc';
-				$ordenation_modifiedat_ordenation = 'fas fa-border-none';
-				$ordenation_trail_status = 'trail_status-asc';
-				$ordenation_trail_status_ordenation = 'fas fa-border-none';
-				switch ($ordenation) {
-					case 'display_position asc':
-						$ordenation_name = 'display_position-desc';
-						$ordenation_name_ordenation = 'fas fa-angle-up';
-						break;
-					case 'display_position desc':
-						$ordenation_name = 'display_position-asc';
-						$ordenation_name_ordenation = 'bi bi-arrow-down';
-						break;
-					case 'trail_title asc':
-						$ordenation_trail = 'trail_title-desc';
-						$ordenation_trail_ordenation = 'fas fa-angle-up';
-						break;
-					case 'trail_title desc':
-						$ordenation_trail = 'trail_title-asc';
-						$ordenation_trail_ordenation = 'fas fa-angle-down';
-						break;
-					case 'modified_at asc':
-						$ordenation_modifiedat = 'modified_at-desc';
-						$ordenation_modifiedat_ordenation = 'fas fa-angle-up';
-						break;
-					case 'modified_at desc':
-						$ordenation_modifiedat = 'modified_at-asc';
-						$ordenation_modifiedat_ordenation = 'fas fa-angle-down';
-						break;
-					case 'trail_status asc':
-						$ordenation_trail_status = 'trail_status-desc';
-						$ordenation_trail_status_ordenation = 'fas fa-angle-up';
-						break;
-					case 'trail_status desc':
-						$ordenation_trail_status = 'trail_status-asc';
-						$ordenation_trail_status_ordenation = 'fas fa-angle-down';
-						break;
+				$rowDataTables = [];
+				foreach ($data as $v) {
+					$rowDataTables[] = array(
+						$v["idx"],
+						$v["cep"],
+						$v["endereco"],
+						$v["numero"],
+						$v["bairro"],
+						$v["cidade"],
+						$v["estado"]
+					);
 				}
 
 				include(constant("cRootServer") . "ui/common/header.inc.php");
@@ -143,14 +112,8 @@ class properties_controller
 				include(constant("cRootServer") . "ui/common/footer.inc.php");
 				include(constant("cRootServer") . "ui/common/list_actions.php");
 				print('<script>' . "\n");
-				print('    data_propriedades_json = {' . "\n");
-				print('        url: "' . $GLOBALS["scheduleds_url"] . '.json"' . "\n");
-				print('        , data: ' . json_encode($done) . "\n");
-				print('        , action: "' . set_url($GLOBALS["property_url"], array("done" => rawurlencode($form["done"]))) . '"' . "\n");
-				print('        , template: ""' . "\n");
-				print('        , page: 1' . "\n");
-				print('    }' . "\n");
 				include(constant("cRootServer") . "furniture/js/propriedades/propriedades.js");
+				print('var properties_datatable = ' . json_encode($rowDataTables));
 				print('</script>' . "\n");
 				include(constant("cRootServer") . "ui/common/foot.inc.php");
 				break;

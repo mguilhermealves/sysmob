@@ -74,8 +74,10 @@
 <script type='text/javascript' src="<?php printf("%s%s", constant("cFurniture"), "js/app.js") ?>"></script>
 <script type='text/javascript' src="<?php printf("%s%s", constant("cFurniture"), "js/viacep.js") ?>"></script>
 
-<script src="<?php printf("%s%s", constant("cFurniture"), "AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js") ?>"></script>
-<script src="<?php printf("%s%s", constant("cFurniture"), "AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js") ?>"></script>
+<script src="<?php printf("%s%s", constant("cFurniture"), "js/DataTables/datatables.min.js") ?>"></script>
+
+<!-- <script src="<?php printf("%s%s", constant("cFurniture"), "AdminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js") ?>"></script> -->
+<!-- <script src="<?php printf("%s%s", constant("cFurniture"), "AdminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js") ?>"></script> -->
 
 <script type="text/javascript" src="<?php printf("%s%s", constant("cFurniture"), "js/jquery.serializejson.js") ?>"></script>
 

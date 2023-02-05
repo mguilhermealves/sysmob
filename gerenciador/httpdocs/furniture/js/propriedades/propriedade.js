@@ -10,8 +10,56 @@ jQuery(function () {
 
     $('.nav-tabs a, .bt_nav_menu').click(function (e) {
         e.preventDefault();
-        //$(this).tab('show');// bloqueado navegacao pelas barras do topo
+        // $(this).tab('show');
     })
+
+    $("#locators_id").autocomplete({
+        serviceUrl: 'locadores.autocomplete?autcomplete_field=locators_id',
+        autoFocus: true,
+        minChars: 1,
+        deferRequestBy: 5,
+        noCache: true,
+        onSelect: function (sugestion) {
+            $("#locators_id").val(sugestion.data.idx);
+            $("#locators_name").val(sugestion.data.name);
+            $("#locators_cpf").val(sugestion.data.cnpj);
+            $("#clients_name_search").val(sugestion.data.name);
+            $("#companies_name_search").val(sugestion.data.companies_attach[0].name);
+            $("#companies_id_search").val(sugestion.data.companies_attach[0].idx);
+        }
+    });
+
+    $("#locators_name").autocomplete({
+        serviceUrl: 'locadores.autocomplete?autcomplete_field=locators_name',
+        autoFocus: true,
+        minChars: 3,
+        deferRequestBy: 5,
+        noCache: true,
+        onSelect: function (sugestion) {
+            $("#clients_id").val(sugestion.data.idx);
+            $("#locators_name").val(sugestion.data.name);
+            $("#locators_cpf").val(sugestion.data.cnpj);
+            $("#clients_name_search").val(sugestion.data.name);
+            $("#companies_name_search").val(sugestion.data.companies_attach[0].name);
+            $("#companies_id_search").val(sugestion.data.companies_attach[0].idx);
+        }
+    });
+
+    $("#locators_cpf").autocomplete({
+        serviceUrl: 'locadores.autocomplete?autcomplete_field=locators_cpf',
+        autoFocus: true,
+        minChars: 3,
+        deferRequestBy: 5,
+        noCache: true,
+        onSelect: function (sugestion) {
+            $("#locators_id").val(sugestion.data.idx);
+            $("#locators_name").val(sugestion.data.name);
+            $("#locators_cpf").val(sugestion.data.cnpj);
+            $("#clients_name_search").val(sugestion.data.name);
+            $("#companies_name_search").val(sugestion.data.companies_attach[0].name);
+            $("#companies_id_search").val(sugestion.data.companies_attach[0].idx);
+        }
+    });
 });
 
 var StepIndex = "endereco";

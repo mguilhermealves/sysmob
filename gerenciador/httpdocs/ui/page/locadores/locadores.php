@@ -5,7 +5,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Listagem de Locadores</li>
+        <li class="active">Locadores</li>
     </ol>
 </section>
 
@@ -88,7 +88,7 @@
                 <tbody>
                     <?php
                     if ($total > 0) {
-                        foreach ($data_locadores as $v) { ?>
+                        foreach ($data as $v) { ?>
                             <tr>
                                 <td><?php print($v["first_name"]); ?></td>
                                 <td><?php print($v["last_name"]); ?></td>
