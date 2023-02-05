@@ -90,8 +90,8 @@
                     if ($total > 0) {
                         foreach ($data as $v) { ?>
                             <tr>
-                                <td><?php print($v["name"]); ?></td>
-                                <td><?php print($v["price"]); ?></td>
+                                <td><?php print($v["endereco"]); ?></td>
+                                <td><?php print($v["numero"]); ?></td>
                                 <th>
                                     <a type="button" class="btn btn-primary btn-sm" href="<?php print(set_url(sprintf($form["pattern"]["action"], $v["idx"]), array("done" => urlencode($form["pattern"]["search"])))) ?>"><i class="bi bi-pencil-square"></i> Editar</a>
                                 </th>

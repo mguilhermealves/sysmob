@@ -61,6 +61,10 @@
                         <input type="text" class="form-control" id="estado" name="estado" value="<?php print(isset($data["estado"]) ? $data["estado"] : "") ?>" readonly>
                     </div>
                 </div>
+
+                <div class="col-lg-12">
+                    <a class="btn btn-primary btnNext">Next</a>
+                </div>
             </div>
         </div>
     </div>
@@ -138,6 +142,11 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div class="col-lg-12">
+                    <a class="btn btn-primary btnNext">Next</a>
+                    <a class="btn btn-primary btnPrevious">Previous</a>
+                </div>
             </div>
         </div>
     </div>
@@ -148,7 +157,20 @@
         <h3 class="box-title">Ação</h3>
     </div>
 
-    <div class="box-footer text-center">
-        <button type="submit" name="btn_save" class="btn btn-primary btn-sm">Salvar e Próxima Etapa</button>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            <a class="btn btn-primary btnNext">Next</a>
+        </div>
+        <div class="tab-pane" id="tab2">
+            <a class="btn btn-primary btnNext">Next</a>
+            <a class="btn btn-primary btnPrevious">Previous</a>
+        </div>
+        <div class="tab-pane" id="tab3">
+            <a class="btn btn-primary btnPrevious">Previous</a>
+        </div>
     </div>
+
+    <!-- <div class="box-footer text-center">
+        <button type="submit" name="btn_save" class="btn btn-primary btn-sm">Salvar e Próxima Etapa</button>
+    </div> -->
 </div>

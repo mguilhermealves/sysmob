@@ -13,7 +13,7 @@ define ("cBancoStr", 'mysql_sysmob');
 define("prefix_tables" , "");
 
 define( "cAppKey" , "sysmob.gerenciador" );
-define( "cTitle" , "Gerenciador - Sysmob" );
+define( "cTitle" , "Gerenciador - SYSMOB" );
 define( "cVersion" , "Desenvolvimento" );
 
 define( "cAppRoot" , "/" );

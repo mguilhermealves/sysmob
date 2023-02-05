@@ -167,6 +167,8 @@ class properties_controller
 			$property = new properties_model();
 			$property->set_filter(array(" idx = '" . $info["idx"] . "' "));
 			$property->load_data();
+			$property->attach(array("additionalproperties"), true);
+			$property->join("usersCreated", "users", array("idx" => "created_by"), null);
 			$data = current($property->data);
 
 			$form = array(
@@ -197,7 +199,7 @@ class properties_controller
 		include(constant("cRootServer") . "ui/common/footer.inc.php");
 		print("<script>");
 		print('$("button[name=\'btn_back\']").bind("click", function(){');
-		print(' document.location = "' . (isset($info["get"]["done"]) ? $info["get"]["done"] : $GLOBALS["trails_url"]) . '" ');
+		print(' document.location = "' . (isset($info["get"]["done"]) ? $info["get"]["done"] : $GLOBALS["properties_url"]) . '" ');
 		print('})' . "\n");
 		include(constant("cRootServer") . "furniture/js/propriedades/propriedade.js");
 		print('</script>' . "\n");
@@ -210,29 +212,25 @@ class properties_controller
 			basic_redir($GLOBALS["home_url"]);
 		}
 
-		$manual = new properties_model();
-
-		print_pre($info, true);
+		$property = new properties_model();
 
 		if (isset($info["idx"]) && (int)$info["idx"] > 0) {
-			$manual->set_filter(array(" idx = '" . $info["idx"] . "' "));
+			$property->set_filter(array(" idx = '" . $info["idx"] . "' "));
 
 			$info["post"]["modified_at"] = date("Y-m-d H:i:s");
 		}
 
-		$manual->populate($info["post"]);
-		$manual->save();
+		$property->populate($info["post"]);
+		$property->save();
 
 		if (!isset($info["idx"]) || (int)$info["idx"] == 0) {
-			$info["idx"] = $manual->con->insert_id;
+			$info["idx"] = $property->con->insert_id;
 		}
-
-		$_SESSION["messages_app"]["success"] = array("Manual Cadastrado com sucesso.");
 
 		if (isset($info["post"]["done"]) && !empty($info["post"]["done"])) {
 			basic_redir($info["post"]["done"]);
 		} else {
-			basic_redir($GLOBALS["properties_url"]);
+			basic_redir(sprintf($GLOBALS["property_url"], $info["idx"]));
 		}
 	}
 
@@ -243,11 +241,11 @@ class properties_controller
 		}
 
 		if (isset($info["idx"])) {
-			$manual = new properties_model();
+			$property = new properties_model();
 
-			$manual->set_filter(array(" idx = '" . $info["idx"] . "' "));
+			$property->set_filter(array(" idx = '" . $info["idx"] . "' "));
 
-			$manual->remove();
+			$property->remove();
 		}
 
 		basic_redir($GLOBALS["properties_url"]);

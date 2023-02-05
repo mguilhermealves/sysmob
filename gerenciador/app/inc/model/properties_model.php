@@ -1,9 +1,10 @@
-<?php 
-class properties_model extends DOLModel{
-	protected $field = array( " idx " , " created_at " , " created_by " , " modified_at " , "modified_by " , " removed_at " , " removed_by " , " endereco ", " numero ", " complemento ", " bairro ", " cidade ", " estado ", " objetivo ", " tipo_imovel ", " finalidade ", " area_util ", " area_total ", " qtd_dormitorios ", " qtd_suites ", " qtd_sala_estar ", " qtd_sala_jantar ", " qtd_copa ", " qtd_cozinha ", " qtd_banheiro ", " qtd_vaga ", " estado_imovel ", " vlr_aluguel ", " vlr_iptu ", " vlr_condominio ", " descritivo_imovel ") ;
-	protected $filter = array( " active = 'yes' " ) ;
-	function __construct( $bd = false  ) {
-		return parent::__construct( "properties" , $bd );
+<?php
+class properties_model extends DOLModel
+{
+	protected $field = array(" idx ", " created_at ", " created_by ", " modified_at ", "modified_by ", " removed_at ", " removed_by ", "cep", " endereco ", " numero ", " complemento ", " bairro ", " cidade ", " estado ");
+	protected $filter = array(" active = 'yes' ");
+	function __construct($bd = false)
+	{
+		return parent::__construct("properties", $bd);
 	}
-} 
-?>
+}

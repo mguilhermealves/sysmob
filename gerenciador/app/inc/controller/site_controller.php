@@ -116,15 +116,6 @@ class site_controller
 
 				$users->populate(array("last_login" => date("Y-m-d H:i:s")));
 				$users->save();
-
-				if (!isset($_COOKIE["token_auth_factors"])) {
-					$_SESSION["auth_factor"] = true;
-				} else {
-					if ($_COOKIE["token_auth_factors"] != $_SESSION[constant("cAppKey")]["credential"]["token_auth_factors"]) {
-						unset($_COOKIE["token_auth_factors"]);
-						$_SESSION["auth_factor"] = true;
-					}
-				}
 			} else {
 				$_SESSION["messages_app"]["warning"] = array("Login e/ou Senha informados não conferem");
 			}
@@ -132,11 +123,6 @@ class site_controller
 			$_SESSION["messages_app"]["warning"] = array("Login e/ou Senha são obrigatórios para realizar o login");
 		}
 		basic_redir($GLOBALS["home_url"]);
-	}
-
-	public static function change_companie($info)
-	{
-		$_SESSION[constant("cAppKey")]["companie_id"] = $info["post"]["companie_id"];
 	}
 
 	public function remover_list($info)
@@ -153,7 +139,7 @@ class site_controller
 
 		$getvalue = current($getvalue);
 
-		$remove = $boiler->con->query(" UPDATE " . $info["post"]["model"] . " set active = 'no' WHERE idx = '" . $info["post"]["id"] . "' ");
+		$remove = $boiler->con->query(" UPDATE " . $info["post"]["model"] . " set active = 'no', removed_at = now(), removed_by = '" . $_SESSION[constant("cAppKey")]["credential"]["idx"] . "' WHERE idx = '" . $info["post"]["id"] . "' ");
 
 		switch ($info["post"]["model"]) {
 			case "pretenantspatrimonies":
