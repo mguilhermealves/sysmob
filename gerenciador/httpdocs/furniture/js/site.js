@@ -53,7 +53,7 @@ $(".btn-remover-list").click(function () {
         url: "/remover-list",
         data: {
             model: model,
-            id: id, 
+            id: id,
             btn_remove: true
         },
         beforeSend: function () {

@@ -5,7 +5,7 @@ class properties_controller
 	{
 		$boiler = new properties_model();
 		$boiler->set_field(array($key, $field));
-		$boiler->set_order(array(" name asc "));
+		$boiler->set_order(array(" idx desc "));
 		$boiler->set_filter($filters);
 		$boiler->load_data();
 		$out = array();
@@ -48,27 +48,12 @@ class properties_controller
 					)
 				);
 
-				$rowDataTables = [];
-				foreach ($data as $v) {
-					$rowDataTables[] = array(
-						$v["idx"],
-						$v["cep"],
-						$v["endereco"],
-						$v["numero"],
-						$v["bairro"],
-						$v["cidade"],
-						$v["estado"]
-					);
-				}
-
 				include(constant("cRootServer") . "ui/common/header.inc.php");
 				include(constant("cRootServer") . "ui/common/head.inc.php");
 				include(constant("cRootServer") . "ui/page/propriedades/propriedades.php");
 				include(constant("cRootServer") . "ui/common/footer.inc.php");
-				include(constant("cRootServer") . "ui/common/list_actions.php");
 				print('<script>' . "\n");
 				include(constant("cRootServer") . "furniture/js/propriedades/propriedades.js");
-				print('var properties_datatable = ' . json_encode($rowDataTables));
 				print('</script>' . "\n");
 				include(constant("cRootServer") . "ui/common/foot.inc.php");
 				break;
@@ -90,24 +75,24 @@ class properties_controller
 			$data = current($property->data);
 
 			$form = array(
-				"title" => "Editar Propriedade",
+				"title" => "Editar Locador",
 				"url" => sprintf($GLOBALS["property_url"], $info["idx"])
 			);
 		} else {
 			$data = array();
 			$form = array(
-				"title" => "Cadastrar Propriedade",
+				"title" => "Cadastrar Locador",
 				"url" => $GLOBALS["newproperty_url"]
 			);
 		}
 
 		$pages = array(
 			"page" => array(
-				"name" => "Propriedade"
+				"name" => "Locador"
 			),
 			"pages" => array(
 				"url" => $GLOBALS["properties_url"],
-				"name" => "Propriedades"
+				"name" => "Locadores"
 			)
 		);
 

@@ -13,8 +13,35 @@ jQuery(function () {
         // $(this).tab('show');
     })
 
-
     $("#is_married").hide();
+
+    $('#table-additionalproperties').DataTable({
+        pageLength: 10,
+        language: {
+            processing: "Processando...",
+            search: "Pesquisar: ",
+            lengthMenu: "_MENU_ resultados por página",
+            info: "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+            infoEmpty: "Mostrando 0 até 0 de 0 registros",
+            infoFiltered: "(Filtrados de _MAX_ registros)",
+            infoPostFix: "",
+            loadingRecords: "Processando...",
+            zeroRecords: "Nenhum registro encontrado",
+            emptyTable: "Nenhum registro encontrado",
+            paginate: {
+                first: "Primeiro",
+                previous: "Anterior",
+                next: "Próximo",
+                last: "Último"
+            },
+            aria: {
+                sortAscending: ": Ordenar colunas de forma ascendente",
+                sortDescending: ": Ordenar colunas de forma descendente"
+            }
+        },
+        order: [[0, "desc"]],
+        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Tudo"]]
+    });
 });
 
 var StepIndex = "endereco";
@@ -39,10 +66,10 @@ $('.btnPrevious').click(function () {
     $('.nav-tabs > .active').prev('li').find('a').trigger('click');
 });
 
-$("#civil_status").change(function () {
-    var civil_status = $(this).val();
+$("#estado_civil").change(function () {
+    var estado_civil = $(this).val();
 
-    if (civil_status == 'married') {
+    if (estado_civil == 'married') {
         $("#is_married").show();
     } else {
         $("#is_married").hide();
@@ -57,7 +84,7 @@ $("#civil_status").change(function () {
 })
 
 /* CONSULTA CEP */
-$("#cep").change(function () {
+$(".cep").change(function () {
 
     //Nova variável "cep" somente com dígitos.
     var cep = $(this).val().replace(/\D/g, '');
@@ -72,20 +99,19 @@ $("#cep").change(function () {
         if (validacep.test(cep)) {
 
             //Preenche os campos com "..." enquanto consulta webservice.
-            $("#endereco").val("...");
-            $("#bairro").val("...");
-            $("#cidade").val("...");
-            $("#estado").val("...");
+            $(".endereco").val("...");
+            $(".bairro").val("...");
+            $(".cidade").val("...");
+            $(".estado").val("...");
 
             //Consulta o webservice viacep.com.br/
             $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
-
                 if (!("erro" in dados)) {
                     //Atualiza os campos com os valores da consulta.
-                    $("#endereco").val(dados.logradouro);
-                    $("#bairro").val(dados.bairro);
-                    $("#cidade").val(dados.localidade);
-                    $("#estado").val(dados.uf);
+                    $(".endereco").val(dados.logradouro);
+                    $(".bairro").val(dados.bairro);
+                    $(".cidade").val(dados.localidade);
+                    $(".estado").val(dados.uf);
                 } //end if.
                 else {
                     //CEP pesquisado não foi encontrado.
@@ -108,8 +134,8 @@ $("#cep").change(function () {
 
 function limpa_formulário_cep() {
     //Limpa valores do formulário de cep.
-    $('rua').val("");
-    $('bairro').val("");
-    $('cidade').val("");
-    $('uf').val("");
+    $('.endereco').val("");
+    $('.bairro').val("");
+    $('.cidade').val("");
+    $('.uf').val("");
 }

@@ -54,13 +54,22 @@ class additionalproperties_controller
 			$info["idx"] = $additionalproperty->con->insert_id;
 		}
 
-		$additionalproperty->save_attach($info, array("properties"));
+		$additionalproperty->save_attach($info, array("locators"));
+
+		$endereçoCompleto = "";
+		if(empty($info["post"]["complemento"])) {
+			$endereçoCompleto = $info["post"]["endereco"] . ", N° " . $info["post"]["numero"] . ", " . $info["post"]["bairro"] . ", " . $info["post"]["cidade"] . " - " . $info["post"]["uf"];
+		} else {
+			$endereçoCompleto = $info["post"]["endereco"] . ", N° " . $info["post"]["numero"] . ", " . $info["post"]["complemento"] . ", " . $info["post"]["bairro"] . ", " . $info["post"]["cidade"] . " - " . $info["post"]["uf"];
+		}
 
 		$html = '<tr id="row_' . $info["idx"] . '">';
 		$html .= '<td>' . $info["idx"] . '</td>';
 		$html .= '<td>' . $info["post"]["tipo_imovel"] . '</td>';
 		$html .= '<td>' . $info["post"]["objetivo"] . '</td>';
 		$html .= '<td>' . $info["post"]["finalidade"] . '</td>';
+		$html .= '<td>' . $endereçoCompleto . '</td>';
+		$html .= '<td>Disponível</td>';
 		$html .= '<td>' . '<button type="button" class="btn btn-danger btn-remover-list" data-id="' . $info["idx"] . '" data-model="additionalproperties" onclick="remover_list(this)"><i class="bi bi-trash"></i></button>' . '</td>';
 		$html .= '</tr>';
 

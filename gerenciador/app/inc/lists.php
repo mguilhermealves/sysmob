@@ -309,3 +309,16 @@ $typepatrimonies_lists = array(
   "Imovel" => "Imovel",
   "Veiculo" => "Veiculo"
 );
+
+$estado_imovel_lists = array(
+  "excelente" => "Excelente",
+  "bom" => "Bom",
+  "medio" => "Médio",
+  "ruim" => "Ruim",
+  "pessimo" => "Péssimo",
+);
+
+$status_propriedade = array(
+  "disponivel" => "Disponível",
+  "indisponivel" => "Indisponível",
+);

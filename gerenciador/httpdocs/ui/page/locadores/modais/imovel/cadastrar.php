@@ -1,7 +1,8 @@
-<div class="modal fade reveal-modal" id="cadastrar_imovel" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" data-backdrop="static" data-action="/cadastrar_imovel_adicional" data-table="#table-additionalproperties">
+<div class="modal fade reveal-modal" id="cadastrar_imovel" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" data-action="/cadastrar_imovel_adicional" data-table="#table-additionalproperties">
+
     <input type="hidden" name="idx" value="0" />
 
-    <input type="hidden" name="properties_id" value="<?php print($data["idx"]) ?>" />
+    <input type="hidden" name="locators_id" value="<?php print($data["idx"]) ?>" />
 
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -11,6 +12,70 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Endereço</h3>
+                            </div>
+
+                            <div class="box-body">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="cep">Cep: </label>
+                                        <input type="text" class="form-control cep" id="cep" name="cep" value="<?php print(isset($data["cep"]) ? $data["cep"] : "") ?>">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="endereco">Endereço: </label>
+                                        <input type="text" class="form-control endereco" id="endereco" name="endereco" value="<?php print(isset($data["endereco"]) ? $data["endereco"] : "") ?>" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="numero">Número: </label>
+                                        <input type="text" class="form-control numero" id="numero" name="numero" value="<?php print(isset($data["numero"]) ? $data["numero"] : "") ?>">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="complemento">Complemento: </label>
+                                        <input type="text" class="form-control complemento" id="complemento" name="complemento" value="<?php print(isset($data["complemento"]) ? $data["complemento"] : "") ?>">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="bairro">Bairro: </label>
+                                        <input type="text" class="form-control bairro" id="bairro" name="bairro" value="<?php print(isset($data["bairro"]) ? $data["bairro"] : "") ?>" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="cidade">Cidade: </label>
+                                        <input type="text" class="form-control cidade" id="cidade" name="cidade" value="<?php print(isset($data["cidade"]) ? $data["cidade"] : "") ?>" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="uf">Estado: </label>
+                                        <select class="form-control uf" id="uf" name="uf" readonly>
+                                            <option value="" <?php print(!isset($data["uf"]) || $data["uf"] == "" ? ' selected="selected"' : '') ?>>Selecione</option>
+                                            <?php
+                                            foreach ($GLOBALS["ufbr_lists"] as $k => $v) {
+                                                printf('<option %s value="%s">%s</option>', isset($data["uf"]) && $k == $data["uf"] ? ' selected' : '', $k, $v);
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="box box-primary">
                             <div class="box-body">
                                 <div class="col-lg-4">
@@ -134,15 +199,20 @@
                                     <div class="form-group">
                                         <label for="qtd_vaga">Quantidade de Vagas:</label>
                                         <input type="number" min="0" max="10" class="form-control" id="qtd_vaga" name="qtd_vaga" value="<?php print(isset($data["qtd_vaga"]) ? $data["qtd_vaga"] : "0") ?>">
-
                                     </div>
                                 </div>
 
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="estado_imovel">Estado do Imóvel:</label>
-                                        <input type="text" class="form-control" id="estado_imovel" name="estado_imovel" value="<?php print(isset($data["estado_imovel"]) ? $data["estado_imovel"] : "0") ?>">
-
+                                        <label for="estado_imovel">Estado do Imóvel: </label>
+                                        <select class="form-control" id="estado_imovel" name="estado_imovel">
+                                            <option value="" <?php print(!isset($data["estado_imovel"]) || $data["estado_imovel"] == "" ? ' selected="selected"' : '') ?>>Selecione</option>
+                                            <?php
+                                            foreach ($GLOBALS["estado_imovel_lists"] as $k => $v) {
+                                                printf('<option %s value="%s">%s</option>', isset($data["estado_imovel"]) && $k == $data["estado_imovel"] ? ' selected' : '', $k, $v);
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
 

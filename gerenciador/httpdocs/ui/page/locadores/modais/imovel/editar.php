@@ -1,4 +1,7 @@
-<div class="modal fade" id="editar_<?php print($additionalproperty["idx"]) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true" data-backdrop="static">
+<div class="modal fade in reveal-modal" id="editar_<?php print($additionalproperty["idx"]) ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <input type="hidden" name="idx" value="<?php print($additionalproperty["idx"]) ?>" />
+    <input type="hidden" name="locators_id" value="<?php print($data["idx"]) ?>" />
+
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,6 +10,70 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Endereço</h3>
+                            </div>
+
+                            <div class="box-body">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="cep">Cep: </label>
+                                        <input type="text" class="form-control cep" id="cep" name="cep" value="<?php print(isset($additionalproperty["cep"]) ? $additionalproperty["cep"] : "") ?>">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="endereco">Endereço: </label>
+                                        <input type="text" class="form-control endereco" id="endereco" name="endereco" value="<?php print(isset($additionalproperty["endereco"]) ? $additionalproperty["endereco"] : "") ?>" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="numero">Número: </label>
+                                        <input type="text" class="form-control numero" id="numero" name="numero" value="<?php print(isset($additionalproperty["numero"]) ? $additionalproperty["numero"] : "") ?>">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="complemento">Complemento: </label>
+                                        <input type="text" class="form-control complemento" id="complemento" name="complemento" value="<?php print(isset($additionalproperty["complemento"]) ? $additionalproperty["complemento"] : "") ?>">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="bairro">Bairro: </label>
+                                        <input type="text" class="form-control bairro" id="bairro" name="bairro" value="<?php print(isset($additionalproperty["bairro"]) ? $additionalproperty["bairro"] : "") ?>" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="cidade">Cidade: </label>
+                                        <input type="text" class="form-control cidade" id="cidade" name="cidade" value="<?php print(isset($additionalproperty["cidade"]) ? $additionalproperty["cidade"] : "") ?>" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="uf">Estado: </label>
+                                        <select class="form-control uf" id="uf" name="uf" readonly>
+                                            <option value="" <?php print(!isset($additionalproperty["uf"]) || $additionalproperty["uf"] == "" ? ' selected="selected"' : '') ?>>Selecione</option>
+                                            <?php
+                                            foreach ($GLOBALS["ufbr_lists"] as $k => $v) {
+                                                printf('<option %s value="%s">%s</option>', isset($additionalproperty["uf"]) && $k == $additionalproperty["uf"] ? ' selected' : '', $k, $v);
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="box box-primary">
                             <div class="box-body">
                                 <div class="col-lg-4">

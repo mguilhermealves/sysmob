@@ -34,10 +34,6 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
-<!-- <script type='text/javascript' src='<?php printf("%s%s", constant("cFurniture"), "js/jquery.inputmask.bundle.js") ?>'></script>
-<script type='text/javascript' src='<?php printf("%s%s", constant("cFurniture"), "js/jquery-autocomplete.js") ?>'></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script> -->
 
 <!-- Select2 -->
 <script src="<?php printf("%s%s", constant("cFurniture"), "AdminLTE/bower_components/select2/dist/js/select2.full.min.js") ?>"></script>
@@ -86,10 +82,6 @@
 <script type='text/javascript' src='<?php printf("%s%s", constant("cFurniture"), "js/site.js") ?>'></script>
 
 <script>
-  $.widget.bridge('uibutton', $.ui.button);
-</script>
-
-<script>
   // $('.editor').jqte();
   $('.datepicker').datepicker({
     dateFormat: 'yy-mm-d',
@@ -106,28 +98,5 @@
     firstDay: 1
   });
 
-  $(function() {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-  })
-
-  $(document).ready(function() {
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    CKEDITOR.replace('editor1')
-    //bootstrap WYSIHTML5 - text editor
-    $('.textarea').wysihtml5()
-  });
-
-  $(document).ready(function() {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging': true,
-      'lengthChange': false,
-      'searching': false,
-      'ordering': true,
-      'info': true,
-      'autoWidth': false
-    })
-  });
+  $.widget.bridge('uibutton', $.ui.button);
 </script>

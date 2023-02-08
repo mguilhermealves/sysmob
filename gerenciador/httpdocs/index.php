@@ -51,22 +51,6 @@ if( site_controller::check_login() ){
 		$p = !empty( $v["params"] ) ? array_merge( $params , $GLOBALS[ $v["params"] ] ) : $params ;
 		$dispatcher->add_route( $v["method"] , "/" .  $v["pattern"] , $v["controller"] , $check , $p ) ;
 	}
-
-	$dispatcher->add_route ( "POST" , "/consultar_cnpj" , "clients_controller:consultar_cnpj" , NULL, $params );
-
-	/* EMPRESAS SOCIOS */
-	$dispatcher->add_route ( "GET" , "/socios/empresa/(?P<companies_id>[0-9]+)" , "partners_controller:select_partners" , NULL, $params ) ;
-	$dispatcher->add_route ( "POST" , "/cadastrar_socio" , "partners_controller:save" , $btn_save, $params ) ;
-	$dispatcher->add_route ( "POST" , "/socio/(?P<idx>[0-9]+)" , "partners_controller:remove" , $btn_remove, $params ) ;
-
-	/* CLIENTES CONTATO */
-	$dispatcher->add_route ( "GET" , "/cadastrar_contato/cliente/(?P<clients_id>[0-9]+)" , "contacts_controller:form" , NULL, $params ) ;
-	$dispatcher->add_route ( "POST" , "/cadastrar_contato" , "contacts_controller:save" , $btn_save, $params ) ;
-	$dispatcher->add_route ( "POST" , "/contato/(?P<idx>[0-9]+)" , "contacts_controller:remove" , $btn_remove, $params ) ;
-	$dispatcher->add_route ( "GET" , "/cliente/(?P<clients_id>[0-9]+)/contato/(?P<idx>[0-9]+)" , "contacts_controller:form" , NULL, $params ) ;
-	$dispatcher->add_route ( "POST" , "/contato/(?P<idx>[0-9]+)" , "contacts_controller:save" , $btn_save, $params ) ;
-
-	$dispatcher->add_route ( "POST" , "/change_companie" , "site_controller:change_companie" , NULL, $params ) ;
 }
 if ( ! $dispatcher->exec() ) {
 	//print_pre( $dispatcher );

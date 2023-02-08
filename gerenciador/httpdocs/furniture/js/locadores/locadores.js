@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#properties-table').DataTable({
+    $('#locators-table').DataTable({
         pageLength: 10,
         language: {
             processing: "Processando...",
